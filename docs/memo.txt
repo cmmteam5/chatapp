@@ -1,0 +1,31 @@
+rails destroy model workspace
+rails g model workspace name:string admin:boolean
+
+rails destroy model user
+rails g model user name:string email:string password:string 
+
+//  rails destroy model workspace_has_user
+//   rails g model workspace_has_user workspace:belongs_to user:belongs_to 
+
+
+rails destroy model group
+rails g model group name:string workspace:belongs_to
+
+//  rails destroy model user_has_group
+//   rails g model user_has_group  group:belongs_to user:belongs_to
+
+
+
+rails destroy model user_conversation
+rails g model user_conversation message:text image:string file:string receiver_id:integer starred_message:string  user:belongs_to
+
+
+rails destroy model user_thread
+rails g model user_thread  thread_message:text  receiver_id:integer user_conversation:belongs_to
+
+
+rails destroy model group_conversation
+rails g model group_conversation message:text image:string file:string receiver_id:integer group:belongs_to
+
+rails destroy model group_thread
+rails g model group_thread thread_message:text  receiver_id:integer group_conversation:belongs_to

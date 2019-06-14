@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  message: MyText
+  image: MyString
+  file: MyString
+  receiver_id: 1
+  starred_message: MyString
+  user: one
+
+two:
+  message: MyText
+  image: MyString
+  file: MyString
+  receiver_id: 1
+  starred_message: MyString
+  user: two
