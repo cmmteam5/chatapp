@@ -40,18 +40,6 @@ ActiveRecord::Schema.define(version: 2019_06_14_102745) do
     t.index ["workspace_id"], name: "index_groups_on_workspace_id"
   end
 
-  create_table "user_conversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "message"
-    t.string "image"
-    t.string "file"
-    t.integer "receiver_id"
-    t.string "starred_message"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_conversations_on_user_id"
-  end
-
   create_table "user_has_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "group_id"
     t.bigint "user_id"
@@ -59,15 +47,6 @@ ActiveRecord::Schema.define(version: 2019_06_14_102745) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_user_has_groups_on_group_id"
     t.index ["user_id"], name: "index_user_has_groups_on_user_id"
-  end
-
-  create_table "user_threads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "thread_message"
-    t.integer "receiver_id"
-    t.bigint "user_conversation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_conversation_id"], name: "index_user_threads_on_user_conversation_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,10 +76,8 @@ ActiveRecord::Schema.define(version: 2019_06_14_102745) do
   add_foreign_key "group_conversations", "groups"
   add_foreign_key "group_threads", "group_conversations"
   add_foreign_key "groups", "workspaces"
-  add_foreign_key "user_conversations", "users"
   add_foreign_key "user_has_groups", "groups"
   add_foreign_key "user_has_groups", "users"
-  add_foreign_key "user_threads", "user_conversations"
   add_foreign_key "workspace_has_users", "users"
   add_foreign_key "workspace_has_users", "workspaces"
 end
