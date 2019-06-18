@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
   root 'static_pages#home'
-  get '/workspace', to:'static_pages#workspace'
-  get '/signin', to:'static_pages#signin'
+ 
 
 
   #get 'create_group/new'
