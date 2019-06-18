@@ -33,4 +33,5 @@ rails g model group_thread thread_message:text  receiver_id:integer group_conver
 rails destroy  controller Profile edit logout
 rails g controller Profile edit logout
 
-rails destroy  controller create_group new
+rails destroy  controller workspace
+rails g controller workspace
