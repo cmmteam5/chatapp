@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   #get 'group/index'
   #get 'group/new'
  # get 'group/edit'
@@ -13,10 +13,7 @@ Rails.application.routes.draw do
   root 'workspaces#index'
   
   resources :workspaces
- 
 
-
-  #get 'create_group/new'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

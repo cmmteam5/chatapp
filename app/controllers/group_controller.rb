@@ -1,4 +1,5 @@
 class GroupController < ApplicationController
+<<<<<<< HEAD
   def index
   end
 
@@ -10,4 +11,6 @@ class GroupController < ApplicationController
 
   def show
   end
+=======
+>>>>>>> 21148d14713f2dd040c4161d0b61ac45af82d236
 end
