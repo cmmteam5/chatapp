@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-
-  root 'static_pages#home'
+  
+  #get 'workspaces/index'
+  #get 'workspaces/new'
+  #get 'workspaces/update'
+ #get 'workspaces/delete'
+ # get 'workspaces/show'
+  #root 'static_pages#home'
+  root 'workspaces#index'
+  resources :workspaces
  
 
 
