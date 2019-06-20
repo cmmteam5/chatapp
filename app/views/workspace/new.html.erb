@@ -1,5 +1,16 @@
 <h1>New Workspace</h1>
+<%= form_tag("/workspaces/new",:method=>"post") do  %>
+<div class="field">
+    Workspace_Name<input type="text" name="name" >
+  </div>
 
-<%= render 'form', workspace: @workspace %>
+  <div class="field">
+    <input type="checkbox" name="admin" value="1">Admin
+  </div>
+  <div class="actions">
+    <input type="submit" value="create workspace">
+  </div>
+  <% end %>
 
-<%= link_to 'Back', workspaces_path %>
+
+

@@ -1,5 +1,6 @@
 rails destroy model workspace
 rails g model workspace name:string admin:boolean
+ rails generate scaffold workspace name:string admin:boolean
 
 rails destroy model user
 rails g model user name:string email:string password:string 
@@ -35,3 +36,7 @@ rails g controller Profile edit logout
 
 rails destroy  controller workspace
 rails g controller workspace
+
+
+rails destroy  controller group
+rails g controller group

@@ -16,9 +16,10 @@
       <tr>
         <td><%= workspace.name %></td>
         <td><%= workspace.admin %></td>
-        <td><%= link_to 'Show', workspace %></td>
-        <td><%= link_to 'Edit', edit_workspace_path(workspace) %></td>
-        <td><%= link_to 'Destroy', workspace, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <td><a href="/edit/<%= workspace.id%>">Edit</a></td>
+        <td><a href="/destroy/<%= workspace.id%>">Destroy</a></td>
+        
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Workspace', new_workspace_path %>
+<%= link_to 'New Workspace', "workspaces/new" %>

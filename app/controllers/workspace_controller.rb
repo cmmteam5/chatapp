@@ -1,57 +1,56 @@
 class WorkspaceController < ApplicationController
-    before_action :set_workspaces, only: [:show, :edit, :update, :destroy]
+  
+ 
   def index
     @workspaces = Workspace.all
   end
 
+  
   def show
   end
 
+  
   def new
     @workspace = Workspace.new
   end
 
+  
   def edit
+   
   end
 
+  
   def create
-    @workspace = Workspace.new(workspace_params)
-
-    respond_to do |format|
+    @workspace = Workspace.new(name:params[:name],admin:params[:admin])
       if @workspace.save
-        format.html { redirect_to @workspace, notice: 'Workspace was successfully created.' }
-        format.json { render :show, status: :created, location: @workspace }
+        redirect_to "/workspaces", notice: 'Workspace was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @workspace.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-def update
-    respond_to do |format|
-      if @workspace.update(workspace_params)
-        format.html { redirect_to @workspace, notice: 'Workspace was successfully updated.' }
-        format.json { render :show, status: :ok, location: @workspace }
-      else
-        format.html { render :edit }
-        format.json { render json: @workspace.errors, status: :unprocessable_entity }
-      end
-    end
+        render 'new' 
+      end    
   end
 
+  
+  def update
+    @workspace= Workspace.find(params[:id])
+    @workspace.update_attributes(name:params[:name],admin:params[:admin])
+    redirect_to "/workspaces", notice: 'Workspace updated.'
+
+  end
+
+  
   def destroy
-    @workspace.destroy
-    respond_to do |format|
-      format.html { redirect_to workspaces_url, notice: 'Workspace was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    w = Workspace.find(params[:id])
+    usr = WorkspaceHasUser.where(:workspace_id => w.id)
+    usr.each {|a|
+      a.delete
+    }
+    w.delete
+    redirect_to workspaces_url, notice: 'Workspace was successfully destroyed.' 
+    
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_workspace
-      @workspace = Workspace.find(params[:id])
-    end
+    
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workspace_params
