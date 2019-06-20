@@ -17,9 +17,10 @@
         <td><%= workspace.name %></td>
         <td><%= workspace.admin %></td>
         
-        <td><a href="/edit/<%= workspace.id%>">Edit</a></td>
-        <td><a href="/destroy/<%= workspace.id%>">Destroy</a></td>
         
+        <td><a href="/destroy/<%= workspace.id%>">Destroy</a></td>
+     
+        <td><%= link_to 'Edit',edit_workspace_path(workspace.id) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -31,7 +31,6 @@ class WorkspaceController < ApplicationController
 
   
   def update
-    @workspace= Workspace.find(params[:id])
     @workspace.update_attributes(name:params[:name],admin:params[:admin])
     redirect_to "/workspaces", notice: 'Workspace updated.'
 

@@ -1,5 +1,5 @@
 <h1>Editing Workspace</h1>
-<%= form_tag("/edit",:method=>"post") do  %>
+<%= form_tag("workspaces/:id",:method=>"post") do  %>
 <div class="field">
     Workspace_Name<input type="text" name="name" >
   </div>
