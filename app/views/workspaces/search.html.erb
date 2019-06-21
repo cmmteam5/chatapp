@@ -1,0 +1,12 @@
+<%= form_with(model: workspace, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+  <div>
+  <%= button_to "Search", action: "search" %>
+  </div>
+   
+  <% end %>
+  <%= link_to 'Back', workspaces_path %>

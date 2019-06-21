@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_102745) do
+ActiveRecord::Schema.define(version: 2019_06_20_102423) do
 
   create_table "group_conversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "message"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 2019_06_14_102745) do
     t.bigint "workspace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "purpose"
+    t.string "email"
+    t.boolean "access_type"
     t.index ["workspace_id"], name: "index_groups_on_workspace_id"
   end
 
