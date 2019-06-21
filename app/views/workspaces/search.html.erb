@@ -1,3 +1,18 @@
+
 <h1>Search workspace</h1>
 <%= render 'search_form',workspace: @workspace %>
 <%= link_to 'Back', workspace_path %>
+
+<%= form_with(model: workspace, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+  <div>
+  <%= button_to "Search", action: "search" %>
+  </div>
+   
+  <% end %>
+  <%= link_to 'Back', workspaces_path %>
+
