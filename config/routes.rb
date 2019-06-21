@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
-  
+
+  #get 'group/index'
+  #get 'group/new'
+ # get 'group/edit'
+  #get 'group/show'
+  #get 'workspaces/index'
+  #get 'workspaces/new'
+  #get 'workspaces/update'
+ #get 'workspaces/delete'
+ # get 'workspaces/show'
+  #root 'static_pages#home'
   root 'workspaces#index'
-  get "/workspaces",to:"workspace#index"
-  get "/destroy/:id",to:"workspace#destroy"
-  get "workspaces/:id/edit",to:"workspace#edit"
-  post "workspaces/",to:"workspace#update"
-  get "workspaces/new",to:"workspace#new"
-  post "workspaces/new",to:"workspace#create"
-  resources :workspaces 
+  resources :workspaces
   
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

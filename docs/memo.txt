@@ -40,3 +40,10 @@ rails g controller workspace
 
 rails destroy  controller group
 rails g controller group
+
+
+//add attribute to table
+rails generate migration add_purpose_email_access_to_group purpose:string email:string access_type:boolean 
+add_column :group, :purpose,:string,:email,:string ,:access_type,:boolean
+
+rails db:migrate

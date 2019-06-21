@@ -1,0 +1,15 @@
+<p>
+<strong>Name: </strong>
+<%= @workspace.name %>
+</p>
+
+<p>
+<strong>Admin: </strong>
+<%= @workspace.admin %>
+</p>
+
+<%= link_to 'Edit' , edit_workspace_path(@workspace) %>
+
+<%= link_to 'Back', workspaces_path %>
+
+
