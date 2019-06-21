@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   #get 'group/index'
   #get 'group/new'
  # get 'group/edit'
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
   #get 'workspaces/index'
   #get 'workspaces/new'
   #get 'workspaces/update'
+
  #get 'workspaces/delete'
  # get 'workspaces/show'
   root 'static_pages#home'
@@ -16,7 +16,18 @@ Rails.application.routes.draw do
   get '/home', to: 'static_pages#home'
   get '/index', to: 'workspaces#index'
   get '/home', to: 'static_pages#home'
+
+  #get 'workspaces/delete'
+  #get 'workspaces/show'
+  #root 'static_pages#home'
+  root 'workspaces#index'
+
   resources :workspaces
+
+ # root 'group#index'
+
+  
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

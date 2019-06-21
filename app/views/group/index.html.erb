@@ -1,27 +1,23 @@
-<h1>Group</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-    
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @workspace.each do |workspaces| %>
-      <tr>
-        <td><%= workspaces.name %></td>
-        <td><%= workspaces.admin %></td>
-        <td><%= link_to 'Show', workspace_path(workspaces) %></td><td></td>
-        <td><%= link_to 'Edit', edit_workspace_path(workspaces) %></td><td></td>
-        <td><%= link_to 'Destroy', workspace_path(workspaces), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<div>
-
-<%= link_to 'New Workspace', new_workspace_path %>
-</div>
+<header class="navbar navbar-fixed-top ">
+  <div class="container">
+    <h1>CMM Chat Application</h1>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Group <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Create", '#' %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Invite", '#' %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Add", '#' %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Delete", '#'%></li>                        
+            </ul>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header>
