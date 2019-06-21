@@ -1,5 +1,6 @@
 rails destroy model workspace
 rails g model workspace name:string admin:boolean
+ rails generate scaffold workspace name:string admin:boolean
 
 rails destroy model user
 rails g model user name:string email:string password:string 
@@ -29,3 +30,13 @@ rails g model group_conversation message:text image:string file:string receiver_
 
 rails destroy model group_thread
 rails g model group_thread thread_message:text  receiver_id:integer group_conversation:belongs_to
+
+rails destroy  controller Profile edit logout
+rails g controller Profile edit logout
+
+rails destroy  controller workspace
+rails g controller workspace
+
+
+rails destroy  controller group
+rails g controller group

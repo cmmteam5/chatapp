@@ -3,6 +3,9 @@ class WorkspacesController < ApplicationController
   def index
     @workspace = Workspace.all
   end
+  def show
+    @workspace = Workspace.find(params[:id])
+  end
 
   def new
     @workspace = Workspace.new
@@ -10,36 +13,38 @@ class WorkspacesController < ApplicationController
   def create
     @workspace = Workspace.new(workspace_params)
     if @workspace.save
-      redirect_to workspaces_url, notice: 'Workspace was successfully created.'
-    else
+     redirect_to workspaces_url, notice: 'Workspace was successfully created.'
+     else
       render 'new'
     end
   end
-  
-    def edit
-      @workspace = Workspace.find(params[:id])
-    end
-  
- 
+  def edit
+    @workspace = Workspace.find(params[:id])
+  end
   def update
-  
     if @workspace.update_attributes(workspace_params)
-      redirect_to workspaces_url, notice: 'Workspace was successfully updated.'
-    else
+      
+      redirect_to workspaces_url
+    else 
+      
+
       render action: :edit
     end
   end
 
-  def delete
-  end
-
-  def show
-  end
+  def destroy
+   Workspace.find(params[:id]).delete
+    
+    redirect_to :action=> "index"
+end
   private
+
+
   def set_workspace
     @workspace = Workspace.find(params[:id])
   end
   def workspace_params
-    params.require(:workspace).permit(:name)
+    params.require(:workspace).permit(:name, :admin)
+
   end
 end

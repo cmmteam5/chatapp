@@ -1,0 +1,48 @@
+class GroupController < ApplicationController
+  before_action :set_group, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @group =Group.all
+  end
+  def show
+    @group = Group.find(params[:id])
+  end
+  def new
+    @group = Group.new
+  end
+   def create
+    @group = Group.new(group_params)
+    if @wgroup.save
+     redirect_to group_url, notice: 'Group was successfully created.'
+     else
+      render 'new'
+    end
+  end
+  def edit
+    @group = Group.find(params[:id])
+  end
+  def update
+    if@group.update_attributes(group_params)
+      
+      redirect_to group_url
+    else 
+      
+
+      render action: :edit
+    end
+  end
+
+  def destroy
+   Group.find(params[:id]).delete
+    
+    redirect_to :action=> "index"
+end
+   
+  private
+  def set_group
+    @group =group.find(params[:id])
+  end
+    def group_params
+      params.require(:group).permit(:group name, :purpose, :email)
+    end
+end

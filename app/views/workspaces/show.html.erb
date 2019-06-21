@@ -1,2 +1,18 @@
-<h1>Workspaces#show</h1>
-<p>Find me in app/views/workspaces/show.html.erb</p>
+
+
+<p>
+<strong>Name: </strong>
+<%= @workspace.name %>
+</p>
+
+<p>
+<strong>Admin: </strong>
+<%= @workspace.admin %>
+</p>
+
+<%= link_to 'Edit' , edit_workspace_path(@workspace) %>
+
+<%= link_to 'Back', workspaces_path %>
+
+
+
