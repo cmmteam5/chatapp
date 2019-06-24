@@ -14,8 +14,13 @@ Rails.application.routes.draw do
   get '/new', to: 'workspaces#new'
   get '/login', to: 'static_pages#login'
   get '/home', to: 'static_pages#home'
-  get '/index', to: 'workspaces#index'
+  
   get '/home', to: 'static_pages#home'
+  #get '/menu', to: 'static_pages#menu'
+  get '/signup', to: 'static_pages#signup'
+
+
+
 
   #get 'workspaces/delete'
   #get 'workspaces/show'
