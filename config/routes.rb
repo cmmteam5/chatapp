@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/new', to: 'workspaces#new'
   get '/login', to: 'static_pages#login'
   get '/home', to: 'static_pages#home'
-  get '/index', to: 'workspaces#index'
+  get '/index', to: 'group#index'
   get '/home', to: 'static_pages#home'
 
   #get 'workspaces/delete'
