@@ -1,5 +1,5 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<h1>Hi! Welcome To Chat App</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -12,12 +12,12 @@
       <%= f.password_field :password, class: 'form-control' %>
       <%= link_to 'Forget Password?' %><br>
 
-      <%= link_to "OK", 'index', class: "btn btn-lg btn-primary" %>
+      <%= link_to "OK", 'menu', class: "btn btn-lg btn-primary" %>
      
       <%= link_to "Cancel", 'home', class: "btn btn-lg btn-primary" %>
      
     <% end %>
 
-    <p>Don't You have an account? <i><%= link_to "Sign up!" %></i></p>
+    <p>Don't You have an account? <i><%= link_to "Sign up!" , 'signup' %></i></p>
   </div>
 </div>

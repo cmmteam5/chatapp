@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   #get 'workspaces/index'
   #get 'workspaces/new'
   #get 'workspaces/update'
-
  #get 'workspaces/delete'
  # get 'workspaces/show'
   root 'static_pages#home'
@@ -14,16 +13,16 @@ Rails.application.routes.draw do
   get '/new', to: 'workspaces#new'
   get '/login', to: 'static_pages#login'
   get '/home', to: 'static_pages#home'
-  get '/index', to: 'group#index'
-  get '/home', to: 'static_pages#home'
-
+  get '/menu', to: 'group#menu'
+ # get '/index', to: 'group#index'
+  get '/home', to: 'static_pages#home' 
+  get '/signup', to: 'static_pages#signup'
+  get '/index', to: 'workspaces#index'
   #get 'workspaces/delete'
   #get 'workspaces/show'
   #root 'static_pages#home'
-  root 'workspaces#index'
-
+  #root 'workspaces#index'
   resources :workspaces
-
  # root 'group#index'
 
   
