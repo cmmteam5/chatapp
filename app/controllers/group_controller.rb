@@ -1,7 +1,10 @@
 class GroupController < ApplicationController
 
+<<<<<<< HEAD
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
+=======
+>>>>>>> fa35f9f285bf7eb9f47aa8a0e5de6941365353d5
   def index
     @group = Group.all
 end
@@ -33,6 +36,7 @@ end
     end
   end
 
+<<<<<<< HEAD
   def destroy
    Group.find(params[:id]).delete
     
@@ -46,4 +50,8 @@ end
     def group_params
       params.require(:group).permit(:name, :workspace_id, :purpose, :email, :access_type)
     end
+=======
+>>>>>>> fef54ffa1db0850f8036f16f4762838a88fa1a37
+
+>>>>>>> fa35f9f285bf7eb9f47aa8a0e5de6941365353d5
 end
