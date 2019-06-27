@@ -1,17 +1,12 @@
-<%= form_with(model: workspace, local: true) do |form| %>
+    <%= form_for @workspace do |form| %>
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :admin %>
-    <%= form.check_box :admin %>
-  </div>
- 
-  <div class="actions">
-  <%= link_to "Create",    'login',class: "btn btn-lg btn-primary" %>
   
-    <%= link_to "Cancel",    'home',class: "btn btn-lg btn-primary" %>
-  </div>
+  <div>
+  <%= form.submit "Create", class: "btn btn-primary" %>
+  <%= form.submit "Cancel", class: "btn btn-primary" %>
+</div>
 <% end %>

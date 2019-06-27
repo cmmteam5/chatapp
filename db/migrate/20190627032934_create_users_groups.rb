@@ -1,6 +1,6 @@
-class CreateUserHasGroups < ActiveRecord::Migration[5.2]
+class CreateUsersGroups < ActiveRecord::Migration[5.2]
   def change
-    create_table :user_has_groups do |t|
+    create_table :users_groups do |t|
       t.belongs_to :group, foreign_key: true
       t.belongs_to :user, foreign_key: true
 

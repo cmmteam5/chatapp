@@ -6,6 +6,5 @@ class StaticPagesController < ApplicationController
   def login
   end
 
-  def alreadyworkspace
-  end
+  
 end
