@@ -13,7 +13,10 @@ class WorkspacesController < ApplicationController
   def create
     @workspace = Workspace.new(workspace_params)
     if @workspace.save
-     redirect_to workspaces_url, notice: 'Workspace was successfully created.'
+      @current=Workspace.last
+      @currentWorkspace=WorkspaceHasUser.new(user_id:1,workspace_id:@current.id)
+      @currentWorkspace.save
+     redirect_to root_url
      else
       render 'new'
     end
@@ -37,13 +40,8 @@ class WorkspacesController < ApplicationController
     
     redirect_to :action=> "index"
 end
-
-
-
   
-
-  private
-
+private
 
   def set_workspace
     @workspace = Workspace.find(params[:id])
