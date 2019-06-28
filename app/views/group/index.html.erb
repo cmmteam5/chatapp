@@ -1,0 +1,21 @@
+<h1>Group</h1>
+
+<table>
+
+  <tbody>
+    <% @group.each do |group| %>
+      <tr>
+       <td><%= group.name %></td>
+        
+        <td><%= group.purpose %></td>
+        <td><%= group.email %></td>
+        <td><%= group.access_type %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+<%= link_to 'New Group', new_group_path %>
+</div>
+
