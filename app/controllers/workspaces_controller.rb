@@ -10,7 +10,6 @@ class WorkspacesController < ApplicationController
     @workspace = Workspace.new
   end
   def create
-    logger.info "-----Create------"
     @workspace = Workspace.new(workspace_params)
     if @workspace.save
     @current=Workspace.last
@@ -19,11 +18,11 @@ class WorkspacesController < ApplicationController
     redirect_to workspaces_url,notice: "Workspace was successfully created."
   end
 end
+
   def edit
     @workspace = Workspace.find(params[:id])
   end
   def update
-    logger.info "-----Update #{params[:id]}------"
     @workspace = Workspace.find(params[:id])
     if @workspace.update_attributes(workspace_params)
       @userWorkspace =UsersWorkspace.find_by(workspace_id: @workspace.id)
@@ -37,10 +36,10 @@ end
   end
 
   def destroy
-    logger.info "-----Destroy #{params[:id]}------"
     Workspace.destroy(params[:id])
+    redirect_to workspaces_url,notice: "Workspace was successfully deleted."
+    
 
-    redirect_to :action => "new"
 end
   private
   def workspace_params
