@@ -5,15 +5,15 @@ rails g model workspace name:string admin:boolean
 rails destroy model user
 rails g model user name:string email:string password:string 
 
-//  rails destroy model workspace_has_user
-//   rails g model workspace_has_user workspace:belongs_to user:belongs_to 
+//  rails destroy model users_workspace
+//   rails g model users_workspace workspace:belongs_to user:belongs_to 
 
 
 rails destroy model group
 rails g model group name:string workspace:belongs_to
 
-//  rails destroy model user_has_group
-//   rails g model user_has_group  group:belongs_to user:belongs_to
+//  rails destroy model users_group
+//   rails g model users_group  group:belongs_to user:belongs_to
 
 
 
@@ -44,6 +44,12 @@ rails g controller group
 
 //add attribute to table
 rails generate migration add_purpose_email_access_to_group purpose:string email:string access_type:boolean 
+
 add_column :group, :purpose,:string,:email,:string ,:access_type,:boolean
 
 rails db:migrate
+
+
+///add default value to admin in workspace
+
+rails generate migration add_test_column_to_workspace admin:boolean

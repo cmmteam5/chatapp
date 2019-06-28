@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WorkspaceHasUserTest < ActiveSupport::TestCase
+class UsersWorkspaceTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

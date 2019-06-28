@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_20_102423) do
+ActiveRecord::Schema.define(version: 2019_06_27_032934) do
 
   create_table "group_conversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "message"
@@ -43,45 +43,6 @@ ActiveRecord::Schema.define(version: 2019_06_20_102423) do
     t.index ["workspace_id"], name: "index_groups_on_workspace_id"
   end
 
-<<<<<<< HEAD
-=======
-  create_table "organizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
->>>>>>> c7e4becf50e0ceeea67ac75eff57009ccc877a4b
-  create_table "user_conversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "message"
-    t.string "image"
-    t.string "file"
-    t.integer "receiver_id"
-    t.string "starred_message"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_conversations_on_user_id"
-  end
-
-  create_table "user_has_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "group_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_user_has_groups_on_group_id"
-    t.index ["user_id"], name: "index_user_has_groups_on_user_id"
-  end
-
-  create_table "user_threads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "thread_message"
-    t.integer "receiver_id"
-    t.bigint "user_conversation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_conversation_id"], name: "index_user_threads_on_user_conversation_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -90,29 +51,36 @@ ActiveRecord::Schema.define(version: 2019_06_20_102423) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "workspace_has_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_users_groups_on_group_id"
+    t.index ["user_id"], name: "index_users_groups_on_user_id"
+  end
+
+  create_table "users_workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "workspace_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_workspace_has_users_on_user_id"
-    t.index ["workspace_id"], name: "index_workspace_has_users_on_workspace_id"
+    t.index ["user_id"], name: "index_users_workspaces_on_user_id"
+    t.index ["workspace_id"], name: "index_users_workspaces_on_workspace_id"
   end
 
   create_table "workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: true
   end
 
   add_foreign_key "group_conversations", "groups"
   add_foreign_key "group_threads", "group_conversations"
   add_foreign_key "groups", "workspaces"
-  add_foreign_key "user_conversations", "users"
-  add_foreign_key "user_has_groups", "groups"
-  add_foreign_key "user_has_groups", "users"
-  add_foreign_key "user_threads", "user_conversations"
-  add_foreign_key "workspace_has_users", "users"
-  add_foreign_key "workspace_has_users", "workspaces"
+  add_foreign_key "users_groups", "groups"
+  add_foreign_key "users_groups", "users"
+  add_foreign_key "users_workspaces", "users"
+  add_foreign_key "users_workspaces", "workspaces"
 end

@@ -1,49 +1,52 @@
 class WorkspacesController < ApplicationController 
-  before_action :set_workspace, only: [:show, :edit, :update, :destroy]
+ 
   def index
     @workspace = Workspace.all
   end
   def show
-    @workspace = Workspace.find(params[:id])
+      @workspace = Workspace.find(params[:id])
   end
   def new
     @workspace = Workspace.new
   end
   def create
+   
     @workspace = Workspace.new(workspace_params)
     if @workspace.save
-      redirect_to workspaces_url
-    else
-      render 'new'
-    end
+    @current=Workspace.last
+    @userWorkspace=UsersWorkspace.new(workspace_id:@current.id,user_id:1)
+    @userWorkspace.save
+    redirect_to workspaces_url,notice: "Workspace was successfully created."
   end
+end
   def edit
     @workspace = Workspace.find(params[:id])
   end
   def update
+ 
+    @workspace = Workspace.find(params[:id])
     if @workspace.update_attributes(workspace_params)
-      
-      redirect_to workspaces_url
-    else 
-      
-      render action: :edit
+      @userWorkspace =UsersWorkspace.find_by(workspace_id: @workspace.id)
+      flash[:success] = "Profile updated"
+      redirect_to :action => "show", :id => @workspace.id
+      #render "show"
+    else
+      flash[:danger] = "Update is not success."
+      render "edit"
     end
   end
 
   def destroy
-   Workspace.find(params[:id]).delete
-    
-    redirect_to :action=> "index"
-end
-
-
   
-  private
+    Workspace.destroy(params[:id])
 
-  def set_workspace
-    @workspace = Workspace.find(params[:id])
+    redirect_to :action => "new"
   end
+  private
   def workspace_params
     params.require(:workspace).permit(:name, :admin)
+  end
+  def userworkspace_params
+    params.require(:UsersWorkspace).permit(:workspace_id, :user_id)
   end
 end
