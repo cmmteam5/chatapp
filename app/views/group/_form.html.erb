@@ -1,0 +1,22 @@
+<h1>Create Group</h1>
+  <%= form_for(@group, url: {action:"create"}) do |form| %>
+    <div class="field">
+      <%= form.label :Group_Name %>
+      <%= form.text_field :name %>
+    </div>
+    
+    <div class="field">
+      <%= form.label :Purpose %>
+      <%= form.text_field :purpose %>
+    </div>
+    <div class="field">
+      <%= form.label :Email %>
+      <%= form.text_field :email %>
+    </div>
+   
+    
+    <div>
+    <%= form.submit "Create", class: "btn btn-primary" %>
+    <%= form.submit "Cancel", class: "btn btn-primary" %>
+  </div>
+  <% end %>
