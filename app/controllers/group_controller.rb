@@ -1,4 +1,5 @@
 class GroupController < ApplicationController
+<<<<<<< HEAD
 
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
@@ -54,4 +55,6 @@ class GroupController < ApplicationController
     end
   end
 
+=======
+>>>>>>> 1b66cd74d13fda32958a60c9f849d70aa5096cfe
 

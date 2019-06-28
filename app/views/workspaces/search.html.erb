@@ -1,15 +1,20 @@
+<<<<<<< HEAD
 
 <h1>Search workspace</h1>
 <%= render 'search_form',workspace: @workspace %>
 <%= link_to 'Back', workspace_path %>
 
 <%= form_with(model: workspace, local: true) do |form| %>
+=======
+  <%= form_for @workspace do |form| %>
+>>>>>>> 1b66cd74d13fda32958a60c9f849d70aa5096cfe
     <div class="field">
       <%= form.label :name %>
       <%= form.text_field :name %>
     </div>
 
   <div>
+  
   <%= button_to "Search", action: "search" %>
   </div>
    

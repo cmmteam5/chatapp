@@ -51,5 +51,7 @@ rails db:migrate
 
 
 ///add default value to admin in workspace
-
 rails generate migration add_test_column_to_workspace admin:boolean
+def change
+    add_column :workspaces, :admin, :boolean, default:true
+end
