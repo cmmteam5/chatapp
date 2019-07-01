@@ -1,23 +1,16 @@
-<%= form_with(model: workspace, local: true) do |form| %>
-  <% if workspace.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(workspace.errors.count, "error") %> prohibited this workspace from being saved:</h2>
-        <ul>
-        <% workspace.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+<div class="d-flex justify-content-center">
+  <%= form_for @workspace do |form| %>
+    <div class="row">
+    <div class="col-md-4">
+  <div class="form-inline">
+    <%= form.label :Workspace_Name %>
+    <%= form.text_field :name,class: 'form-control form-control-sm', placeholder: 'Eg. CMM' %>
   </div>
-
- 
-  <div class="actions">
-    <%= form.submit %>
+  <br> 
+  <div class="form-inline">
+    <%= form.submit "Update", class: "btn btn-primary" %>
+    <%= form.submit "Cancel", class: "btn btn-primary" %>
+  </div>
+  </div>
   </div>
 <% end %>
-

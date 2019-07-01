@@ -1,12 +1,16 @@
-    <%= form_for @workspace do |form| %>
-  <div class="field">
+ <div class="d-flex justify-content-center">
+ <%= form_for @workspace do |form| %>
+  <div class="row">
+  <div class="col-md-4">
+  <div class="form-inline">
     <%= form.label :Workspace_Name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name,class: 'form-control form-control-sm', placeholder: 'Eg. CMM' %>
   </div>
-
-  
-  <div>
-  <%= form.submit "Create", class: "btn btn-primary" %>
-  <%= form.submit "Cancel", class: "btn btn-primary" %>
-</div>
+  <br>
+  <div class="form-inline">
+    <%= form.submit "Create", class: "btn btn-primary" %>
+    <%= form.submit "Cancel", class: "btn btn-primary" %>
+  </div>
+  </div>
+  </div>
 <% end %>
