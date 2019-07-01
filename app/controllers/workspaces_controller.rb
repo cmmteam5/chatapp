@@ -45,7 +45,14 @@ class WorkspacesController < ApplicationController
     redirect_to workspaces_url,notice: "Workspace was successfully deleted."
 
   end
-
+def search
+  @user = User.where(email: params['id']['email'])
+  if !@user.nil?
+    render "search"
+  else
+    redirect_to :action => "new"
+  end
+end
 
   private
 

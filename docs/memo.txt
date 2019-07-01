@@ -55,3 +55,7 @@ rails generate migration add_test_column_to_workspace admin:boolean
 def change
     add_column :workspaces, :admin, :boolean, default:true
 end
+
+///remove columns 
+rails destroy migration remove_email_from_group  
+rails g migration remove_email_from_group email:string

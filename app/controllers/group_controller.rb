@@ -10,28 +10,22 @@ class GroupController < ApplicationController
     @group = Group.new
   end
   def create
-    
-    @group = Group.new(group_params)
-    if @group.save
-    redirect_to '/'
-  
-    else 
-	  render 'new'
-	  end
-  end	
+    @current=Workspace.last
+    @group = Group.new(name:params[:name],workspace_id:@current.id,purpose:params[:purpose],access_type:params[:ass_typ])
+    @group.save
+    redirect_to "/"
+
+  end
   def edit
     @group = Group.find(params[:id])
   end
+
   def update
- 
        @group= Group.find(params[:id])
     if @group.update_attributes(group_params)
-      
-      redirect_to :action => "show", :id => @group.id
-      
+      redirect_to group_url
     else
-      flash[:danger] = "Update is not success."
-      render "edit"
+      render action: :edit
     end
   end
 
@@ -47,7 +41,7 @@ class GroupController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name,:workspace_id,:purpose,:email,:access_type)
+    params.require(:group).permit(:name, :workspace_id, :purpose,:access_type)
   end
  
 end
