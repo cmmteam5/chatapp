@@ -1,0 +1,23 @@
+<% provide(:title, "Log in") %>
+<h1>Hi! Welcome To Chat App</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+      <%= link_to 'Forget Password?' %><br>
+
+      <%= link_to "OK", 'menu', class: "btn btn-lg btn-primary" %>
+     
+      <%= link_to "Cancel", 'home', class: "btn btn-lg btn-primary" %>
+     
+    <% end %>
+
+    <p>Don't You have an account? <i><%= link_to "Sign up!" , 'signup' %></i></p>
+  </div>
+</div>

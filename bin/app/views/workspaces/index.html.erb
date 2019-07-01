@@ -1,0 +1,30 @@
+<h1>Workspaces</h1>
+
+<table>
+<thead>
+<tr>
+  <th>Name</th>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th>Admin</th>
+  <th colspan="4"></th>
+</tr>
+</thead>
+  
+  <tbody>
+    <% @workspace.each do |workspaces| %>
+      <tr>
+       <td><%= workspaces.name %></td>
+        <td><%= workspaces.admin %></td>
+        <td><%= link_to 'Show', workspace_path(workspaces) %></td>
+        <td><%= link_to 'Edit', edit_workspace_path(workspaces) %></td>
+        <td><%= link_to 'Destroy', workspace_path(workspaces), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+<%= link_to 'New Workspace', new_workspace_path %>
+
+</div>
