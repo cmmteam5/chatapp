@@ -12,8 +12,8 @@ rails g model user name:string email:string password:string
 rails destroy model group
 rails g model group name:string workspace:belongs_to
 
-//  rails destroy model users_group
-//   rails g model users_group  group:belongs_to user:belongs_to
+//  rails destroy model groups_user
+//   rails g model  groups_user  group:belongs_to user:belongs_to
 
 
 
@@ -59,3 +59,7 @@ end
 ///remove columns 
 rails destroy migration remove_email_from_group  
 rails g migration remove_email_from_group email:string
+
+
+rails destroy controller searchs
+rails g controller searchs

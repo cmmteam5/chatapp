@@ -9,12 +9,12 @@ class GroupController < ApplicationController
   def new
     @group = Group.new
   end
+
   def create
     @current=Workspace.last
     @group = Group.new(name:params[:name],workspace_id:@current.id,purpose:params[:purpose],access_type:params[:ass_typ])
     @group.save
     redirect_to "/"
-
   end
   def edit
     @group = Group.find(params[:id])
