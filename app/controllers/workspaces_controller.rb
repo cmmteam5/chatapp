@@ -19,6 +19,19 @@ class WorkspacesController < ApplicationController
       redirect_to @workspace,notice:"Workspace has successfully created."
     
   end
+<<<<<<< HEAD
+end
+def search
+  @workspaces = Workspace.where(params[:name])
+  if !@workspaces.nil?
+    render "search"
+  else
+    flash[:info] = "No workspace are found, please create it!"
+    redirect_to :action => "new"
+  end
+end
+=======
+>>>>>>> 0bb737eadc9477c6f7a969d69685be7696993344
   def edit
     @workspace = Workspace.find(params[:id])
   end

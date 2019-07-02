@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+ <div class="d-flex justify-content-center">
+ <%= form_for @workspace do |form| %>
+  <div class="row">
+  <div class="col-md-4">
+  <div class="form-inline">
+    <%= form.label :Workspace_Name %>
+    <%= form.text_field :name,class: 'form-control form-control-sm', placeholder: 'Eg. CMM' %>
+  </div>
+  <br>
+  <div class="form-inline">
+    <%= form.submit "Create", class: "btn btn-primary" %>
+    <%= form.submit "Cancel", class: "btn btn-primary" %>
+  </div>
+  </div>
+=======
 <%= form_for @workspace do |form| %>
   <div class="field">
     <%= form.label :Workspace_Name %>
@@ -6,5 +22,6 @@
   <div>
   <%= form.submit "Create", class: "btn btn-primary" %>
   <%= form.submit "Cancel", class: "btn btn-primary" %>
+>>>>>>> 0bb737eadc9477c6f7a969d69685be7696993344
   </div>
 <% end %>

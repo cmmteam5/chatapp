@@ -1,0 +1,26 @@
+<<<<<<< HEAD
+  <%= form_for(Workspace.new,url: {action:"search"}) do |f| %>
+    
+=======
+
+<h1>Search workspace</h1>
+<%= render 'search_form',workspace: @workspace %>
+<%= link_to 'Back', workspace_path %>
+
+<%= form_with(model: workspace, local: true) do |form| %>
+
+  <%= form_for @workspace do |form| %>
+>>>>>>> 0bb737eadc9477c6f7a969d69685be7696993344
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+  <div>
+  
+  <%= button_to "Search", action: "search" %>
+  </div>
+   
+  <% end %>
+  <%= link_to 'Back', workspaces_path %>
+
