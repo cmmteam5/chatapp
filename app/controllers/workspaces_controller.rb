@@ -3,39 +3,33 @@ class WorkspacesController < ApplicationController
   def index
     @workspace = Workspace.all
   end
+
   def show
-      @workspace = Workspace.find(params[:id])
+    @workspace = Workspace.find(params[:id])
+    helpers.set_workspace @workspace
+    @group = Group.all
+    @group = Group.where(:workspace => @workspace.id)
   end
 
   def new
     @workspace = Workspace.new
   end
+
   def create
     @workspace = Workspace.new(workspace_params)
     @workspace.save
-   
+    helpers.set_workspace @workspace
       @current=Workspace.last
       @userWorkspace=UsersWorkspace.new(workspace_id:@current.id,user_id:1)
       @userWorkspace.save
       redirect_to @workspace,notice:"Workspace has successfully created."
     
   end
-<<<<<<< HEAD
-end
-def search
-  @workspaces = Workspace.where(params[:name])
-  if !@workspaces.nil?
-    render "search"
-  else
-    flash[:info] = "No workspace are found, please create it!"
-    redirect_to :action => "new"
-  end
-end
-=======
->>>>>>> 0bb737eadc9477c6f7a969d69685be7696993344
+
   def edit
     @workspace = Workspace.find(params[:id])
   end
+
   def update
 
     @workspace = Workspace.find(params[:id])
@@ -64,7 +58,6 @@ end
 
   def workspace_params
     params.require(:workspace).permit(:name, :admin)
-
   end
   def userworkspace_params
     params.require(:UsersWorkspace).permit(:workspace_id, :user_id)

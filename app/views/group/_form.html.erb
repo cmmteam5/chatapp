@@ -2,21 +2,34 @@
   <%= form_for(@group, url: {action:"create"}) do |form| %>
     <div class="field">
       <%= form.label :Group_Name %>
-      <%= form.text_field :name %>
+      <%= form.text_field :name,name:"name" %>
     </div>
     
     <div class="field">
       <%= form.label :Purpose %>
-      <%= form.text_field :purpose %>
-    </div>
-    <div class="field">
-      <%= form.label :Email %>
-      <%= form.text_field :email %>
+      <%= form.text_field :purpose,name:"purpose" %>
     </div>
    
+
+    <div>
+      <%= radio_button_tag(:ass_typ, "true") %>Public
+      <%= radio_button_tag(:ass_typ, "false") %>Private
+    </div>
+    <p id="demo"></p>
+    <div>
+    <%= form.hidden_field :workspace_id,name:"workspace_id", value: "#{@workspace.id}"%>
+    </div>
     
     <div>
+    
     <%= form.submit "Create", class: "btn btn-primary" %>
     <%= form.submit "Cancel", class: "btn btn-primary" %>
   </div>
   <% end %>
+  <script>  
+    function add_ass_typ(a){
+      
+    }
+
+  </script>
+  

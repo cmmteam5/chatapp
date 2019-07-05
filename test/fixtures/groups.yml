@@ -2,8 +2,12 @@
 
 one:
   name: MyString
+  purpose: MyString
+  access_type: false
   workspace: one
 
 two:
   name: MyString
+  purpose: MyString
+  access_type: false
   workspace: two

@@ -1,39 +1,49 @@
+rails generate scaffold workspace name:string admin:boolean
+
+/******CREATE MODEL *******/
+rails g model workspace name:string 
+
+rails g model users_workspace workspace:belongs_to user:belongs_to 
+
+rails g model group name:string purpose:string access_type:boolean workspace:belongs_to
+
+rails g model users_group  group:belongs_to user:belongs_to
+
+rails g model group_conversation message:text receiver_id:integer group:belongs_to
+
+rails g model group_thread thread_message:text  receiver_id:integer group_conversation:belongs_to
+
+
+
+
+/*********DESTROY MODEL ****************/
 rails destroy model workspace
-rails g model workspace name:string admin:boolean
- rails generate scaffold workspace name:string admin:boolean
-
 rails destroy model user
-rails g model user name:string email:string password:string 
-
-//  rails destroy model users_workspace
-//   rails g model users_workspace workspace:belongs_to user:belongs_to 
-
-
+rails destroy model users_workspace
 rails destroy model group
-rails g model group name:string workspace:belongs_to
-
-//  rails destroy model users_group
-//   rails g model users_group  group:belongs_to user:belongs_to
-
+rails destroy model users_group
+rails destroy model group_conversation
+rails destroy model group_thread
 
 
+
+
+
+
+
+
+
+//////////////////////////////
 rails destroy model user_conversation
 rails g model user_conversation message:text image:string file:string receiver_id:integer starred_message:string  user:belongs_to
-
 
 rails destroy model user_thread
 rails g model user_thread  thread_message:text  receiver_id:integer user_conversation:belongs_to
 
 
-rails destroy model group_conversation
-rails g model group_conversation message:text image:string file:string receiver_id:integer group:belongs_to
 
-rails destroy model group_thread
-rails g model group_thread thread_message:text  receiver_id:integer group_conversation:belongs_to
 
-rails destroy  controller Profile edit logout
-rails g controller Profile edit logout
-
+/***************CREATE CONTROLLER  ***********/
 rails destroy  controller workspace
 rails g controller workspace
 
@@ -43,6 +53,7 @@ rails g controller group
 
 
 //add attribute to table
+rails destroy migration add_purpose_email_access_to_group
 rails generate migration add_purpose_email_access_to_group purpose:string email:string access_type:boolean 
 
 add_column :group, :purpose,:string,:email,:string ,:access_type,:boolean
@@ -50,7 +61,8 @@ add_column :group, :purpose,:string,:email,:string ,:access_type,:boolean
 rails db:migrate
 
 
-///add default value to admin in workspace
+///add default value to admin in workspace////
+rails destroy migration add_test_column_to_workspace 
 rails generate migration add_test_column_to_workspace admin:boolean
 def change
     add_column :workspaces, :admin, :boolean, default:true

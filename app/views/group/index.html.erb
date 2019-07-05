@@ -1,4 +1,4 @@
-<h1>Group</h1>
+<h1>Already Group</h1>
 
 <table>
 
@@ -8,17 +8,17 @@
        <td><%= group.name %></td>
         
         <td><%= group.purpose %></td>
-        <td><%= group.email %></td>
+       
         <td><%= group.access_type %></td>
         <td><%= link_to 'Show', group_path(group)%></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy',  group_path(group), method: "delete", data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', group_path(group), method: "delete", data: { confirm: 'Are you sure?' } %></td>
         
       </tr>
     <% end %>   
   </tbody>
 </table>
 <div>
-<%= link_to 'New Group', new_group_path %>
+<%= link_to 'Back', new_group_path %>
 </div>
 
