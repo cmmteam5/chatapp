@@ -6,7 +6,10 @@ class WorkspacesController < ApplicationController
 
   def show
     @workspace = Workspace.find(params[:id])
+<<<<<<< HEAD
     helpers.set_workspace @workspace
+=======
+>>>>>>> 848e817923bc1f68e307cecdf538a1f296a3862b
     @group = Group.all
     @group = Group.where(:workspace => @workspace.id)
   end
@@ -18,7 +21,10 @@ class WorkspacesController < ApplicationController
   def create
     @workspace = Workspace.new(workspace_params)
     @workspace.save
+<<<<<<< HEAD
     helpers.set_workspace @workspace
+=======
+>>>>>>> 848e817923bc1f68e307cecdf538a1f296a3862b
       @current=Workspace.last
       @userWorkspace=UsersWorkspace.new(workspace_id:@current.id,user_id:1)
       @userWorkspace.save

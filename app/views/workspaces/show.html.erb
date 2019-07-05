@@ -29,15 +29,22 @@ h1 {
     top: 145px;
     left: 0;
     height: 100vh;  
+<<<<<<< HEAD
     background: pink;
     color: green;
  
  
+=======
+    background: black;
+    color: #fff;
+ 
+>>>>>>> 848e817923bc1f68e307cecdf538a1f296a3862b
 }
 </style>
 </head>
 
  <body>
+<<<<<<< HEAD
       <h1>CMM Chat Application</h1>
       <a href="#"><%= @workspace.name %></a>
       
@@ -72,6 +79,64 @@ h1 {
     </ul>
   </nav>
   </div>
+=======
+  <h1>CMM Chat Application</h1>
+  <a href="#Workspace"><%= @workspace.name %></a>
+  <div>
+  <nav class="navbar navbar-expand-lg bg-light navbar-light">
+  <ul class="navbar-nav">
+     <li class="nav-item">
+        <a class="nav-link" href="#">Name</a>
+      </li>
+     <li class="nav-item">
+        <a class="nav-link" href="#">Friend</a>
+      </li>
+      <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Group
+      </button>
+      <div class="dropdown-menu">
+      <a class="dropdown-item" href="/group/new">Create</a>      
+      <a class="dropdown-item" href="#">Invite</a>
+      <a class="dropdown-item" href="#">View</a>
+      </div>
+      </div>       
+      <li class="nav-item">
+        <a class="nav-link" href="#">Starred</a>
+      </li>    
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>  
+      <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+      </li>     
+  </ul>
+  </nav>
+  </div>
+
+  <div class="wrapper"> 
+  <nav id="sidebar">
+      <div class="sidebar-header">    
+      <ul class="list-group list-group-flush">       
+      </ul>   
+  
+  
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+   Setting
+    </button>
+    <div class="dropdown-menu">
+    <a class="dropdown-item" href="/group/new">Create</a>      
+    <a class="dropdown-item" href="#">Invite</a>
+    <a class="dropdown-item" href="#">View</a>
+    </div>
+  </div>  
+ 
+  </div>   
+ </nav>
+</div>
+</body>
+</html>
+>>>>>>> 848e817923bc1f68e307cecdf538a1f296a3862b
 
   <div class="wrapper"> 
      <nav id="sidebar"> 

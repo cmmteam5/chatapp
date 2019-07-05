@@ -30,6 +30,11 @@ rails destroy model group_thread
 
 
 
+<<<<<<< HEAD
+=======
+//  rails destroy model groups_user
+//   rails g model  groups_user  group:belongs_to user:belongs_to
+>>>>>>> 848e817923bc1f68e307cecdf538a1f296a3862b
 
 
 
@@ -67,3 +72,11 @@ rails generate migration add_test_column_to_workspace admin:boolean
 def change
     add_column :workspaces, :admin, :boolean, default:true
 end
+
+///remove columns 
+rails destroy migration remove_email_from_group  
+rails g migration remove_email_from_group email:string
+
+
+rails destroy controller searchs
+rails g controller searchs

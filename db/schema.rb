@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_07_05_084128) do
+=======
+ActiveRecord::Schema.define(version: 2019_07_01_095043) do
+>>>>>>> 848e817923bc1f68e307cecdf538a1f296a3862b
 
   create_table "group_conversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "message"
@@ -37,7 +41,21 @@ ActiveRecord::Schema.define(version: 2019_07_05_084128) do
     t.bigint "workspace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
+=======
+    t.string "purpose"
+    t.boolean "access_type"
+>>>>>>> 848e817923bc1f68e307cecdf538a1f296a3862b
     t.index ["workspace_id"], name: "index_groups_on_workspace_id"
+  end
+
+  create_table "groups_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_groups_users_on_group_id"
+    t.index ["user_id"], name: "index_groups_users_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -80,6 +98,8 @@ ActiveRecord::Schema.define(version: 2019_07_05_084128) do
   add_foreign_key "group_conversations", "groups"
   add_foreign_key "group_threads", "group_conversations"
   add_foreign_key "groups", "workspaces"
+  add_foreign_key "groups_users", "groups"
+  add_foreign_key "groups_users", "users"
   add_foreign_key "users_groups", "groups"
   add_foreign_key "users_groups", "users"
   add_foreign_key "users_workspaces", "users"
