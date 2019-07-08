@@ -9,19 +9,15 @@
       <%= form.label :Purpose %>
       <%= form.text_field :purpose,name:"purpose" %>
     </div>
-   
-
+  
     <div>
       <%= radio_button_tag(:ass_typ, "true") %>Public
       <%= radio_button_tag(:ass_typ, "false") %>Private
     </div>
     <p id="demo"></p>
-<<<<<<< HEAD
     <div>
     <%= form.hidden_field :workspace_id,name:"workspace_id", value: "#{@workspace.id}"%>
     </div>
-=======
->>>>>>> 848e817923bc1f68e307cecdf538a1f296a3862b
     
     <div>
     

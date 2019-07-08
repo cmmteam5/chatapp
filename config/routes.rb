@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 848e817923bc1f68e307cecdf538a1f296a3862b
 
 Rails.application.routes.draw do  
 
@@ -17,9 +13,5 @@ Rails.application.routes.draw do
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 848e817923bc1f68e307cecdf538a1f296a3862b
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

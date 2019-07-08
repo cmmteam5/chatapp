@@ -7,7 +7,7 @@ rails g model users_workspace workspace:belongs_to user:belongs_to
 
 rails g model group name:string purpose:string access_type:boolean workspace:belongs_to
 
-rails g model users_group  group:belongs_to user:belongs_to
+rails g model groups_user group:belongs_to user:belongs_to
 
 rails g model group_conversation message:text receiver_id:integer group:belongs_to
 
@@ -21,7 +21,7 @@ rails destroy model workspace
 rails destroy model user
 rails destroy model users_workspace
 rails destroy model group
-rails destroy model users_group
+rails destroy model groups_user
 rails destroy model group_conversation
 rails destroy model group_thread
 
@@ -30,11 +30,6 @@ rails destroy model group_thread
 
 
 
-<<<<<<< HEAD
-=======
-//  rails destroy model groups_user
-//   rails g model  groups_user  group:belongs_to user:belongs_to
->>>>>>> 848e817923bc1f68e307cecdf538a1f296a3862b
 
 
 
