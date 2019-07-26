@@ -18,7 +18,11 @@ class GroupController < ApplicationController
     def create
         #@workspace=Workspace.find(params[:workspace_id])   
         @c=Workspace.last
+<<<<<<< HEAD
         group = Group.new(name:params[:name],purpose:params[:purpose],access_type:params[:ass_typ],workspace_id:@c.id,level:"owner")
+=======
+        group = Group.new(name:params[:name],purpose:params[:purpose],access_type:params[:ass_typ],workspace_id:@c.id)
+>>>>>>> c97fc7dfbd02e1f7b6f10eb08866af686d07cd79
           if group.save
           @b=Group.last
           @currentgroup=Groupuser.create(user_id:current_user.id,group_id:@b.id,level:"owner")
@@ -48,7 +52,11 @@ class GroupController < ApplicationController
       def destroy
       
         Group.destroy(params[:id])
+<<<<<<< HEAD
           redirect_to root_path
+=======
+          redirect_to '/group'
+>>>>>>> c97fc7dfbd02e1f7b6f10eb08866af686d07cd79
       end
     
     

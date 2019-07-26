@@ -1,5 +1,8 @@
 Rails.application.routes.draw do  
+<<<<<<< HEAD
   #scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+=======
+>>>>>>> c97fc7dfbd02e1f7b6f10eb08866af686d07cd79
   root 'home#home'
   get    '/login',   to: 'session#new'
   post   '/login',   to: 'session#create'

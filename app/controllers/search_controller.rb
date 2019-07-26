@@ -1,6 +1,10 @@
 class SearchController < ApplicationController
 
     def index
+<<<<<<< HEAD:app/controllers/search_controller.rb
+=======
+        
+>>>>>>> c97fc7dfbd02e1f7b6f10eb08866af686d07cd79:app/controllers/search_controller.rb
         @workspace = Workspace.page(params[:page])
         @user=User.all
     end

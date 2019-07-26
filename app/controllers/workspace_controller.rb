@@ -2,8 +2,11 @@ class WorkspaceController < ApplicationController
 
     def index
         @workspace = Workspace.all
+<<<<<<< HEAD
        
       
+=======
+>>>>>>> c97fc7dfbd02e1f7b6f10eb08866af686d07cd79
         
     end
     
@@ -21,6 +24,10 @@ class WorkspaceController < ApplicationController
     
     def create
         
+<<<<<<< HEAD
+=======
+        
+>>>>>>> c97fc7dfbd02e1f7b6f10eb08866af686d07cd79
         @workspace = Workspace.new(workspace_params)
        if @workspace.save
         
