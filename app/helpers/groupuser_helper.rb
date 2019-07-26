@@ -1,0 +1,2 @@
+module GroupuserHelper
+end
