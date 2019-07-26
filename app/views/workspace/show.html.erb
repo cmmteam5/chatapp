@@ -1,0 +1,61 @@
+<h2>CMM Chat Application</h2>
+  <nav class="navbar navbar-expand-lg bg-light navbar-light">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#"><%= current_user.name %></a>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= @workspace.name %>
+              </a>              
+              <div class="dropdown-menu" >                     
+                <%= link_to 'Edit', edit_workspace_path,class: "dropdown-item" %>
+                <%= link_to 'Destroy', workspace_path, method: :delete, data: { confirm: 'Are you sure?' },class: "dropdown-item" %></td>
+                <%= link_to 'Invite',workspace_userworkspace_index_path(@workspace.id),class: "dropdown-item" %></br>
+              </div> 
+          </div> 
+        </li>
+        <li class="nav-item">   
+          <div class="dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Group
+              </a>
+              <div class="dropdown-menu">                  
+                 <%= link_to "Create", new_group_path,class: "dropdown-item" %>              
+                 
+              </div>
+          </div>    
+        </li>   
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Friend</a>
+        </li>      
+        <li class="nav-item">
+          <a class="nav-link" href="#">Starred</a>
+        </li>              
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to('Logout') %> 
+        </li>   
+    </ul>
+  </nav>
+  <div class="wrapper"> 
+      <nav id="sidebar"> 
+        <h4>Groups </h4>  
+          <ul class="# ">
+              <% @group.each do |groups| %>
+                <li><%= link_to groups.name , group_path(groups) %></li>
+                <div class="dropdown-menu1" > 
+                <%= link_to 'Invite',group_groupuser_index_path(groups.id) %></br>
+                <%= link_to 'Edit', edit_group_path(groups.id) %></br>
+                <%= link_to 'Destroy', group_path(groups.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
+              <% end %>  
+          </ul>   
+      </nav>
+
+
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-color:   #aed6f1   ;
+}
+
+.b{
+ 
+  
+  margin-top: 30px;
+  margin-bottom: 350px;
+  margin-right: 50px;
+  margin-left: 580px;
+ 
+}
+
+
+   h2 {
+    color:     #2471a3   ;
+    text-align: center;
+       }
+
+</style>
+</head>
+<body>
+
+<br>
+<br>
+<h2>Edit Workspaces</h2>
+<div class="b">
+  <%= form_for @workspace do |form| %>
+    
+    <div class="row">
+    <div class="col-md-4">
+      <div class="form-inline">
+        <%= form.label :Workspace_Name %>
+        <%= form.text_field :name,class: 'form-control form-control-sm', placeholder: 'Eg. CMM' %>
+      </div>
+  <br> 
+  <% if @workspace.errors.any? %>
+  <div id="errorExplanation">
+    <ul>
+    <% @workspace.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div >
+    <%= form.submit "Update", class: "btn btn-primary" %>
+    <%= form.submit "Cancel", class: "btn btn-primary" %><br>
+    <%= link_to 'Back', workspace_path %>
+  </div>
+  </div>
+  </div>
+<% end %>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,29 @@
+<h2> Create Your Workspace</h2>
+<div class="newworkspace">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @workspace, url: {action: "create"} do |form| %> 
+     
+      <%= form.label :'Workspace Name'%>
+      <%= form.text_field :name,class:"form-control" , placeholder: 'Eg. CMM' %>
+
+      <% if @workspace.errors.any? %>
+      <div id="errorExplanation">
+        <ul>
+        <% @workspace.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+      <% end %>
+     
+      <br>
+      <%= form.submit 'Create', class: "btn btn-primary" %>
+      <%= form.submit 'Cancel', class: "btn btn-primary margin-left" %>
+
+    <% end %>
+  </div>
+</div>
+     
+      
+
+

@@ -1,36 +1,29 @@
 rails generate scaffold workspace name:string admin:boolean
 
 /******CREATE MODEL *******/
+rails g model user name:string email:string password_digest:string
+
 rails g model workspace name:string 
 
-rails g model users_workspace workspace:belongs_to user:belongs_to 
+rails g model userworkspace workspace:belongs_to user:belongs_to 
 
 rails g model group name:string purpose:string access_type:boolean workspace:belongs_to
 
-rails g model groups_user group:belongs_to user:belongs_to
+rails g model groupuser group:belongs_to user:belongs_to
 
-rails g model group_conversation message:text receiver_id:integer group:belongs_to
+rails g model groupconversation message:text user:belongs_to group:belongs_to
 
-rails g model group_thread thread_message:text  receiver_id:integer group_conversation:belongs_to
-
-
+rails g model groupthread thread_message:text groupconversation:belongs_to
 
 
-/*********DESTROY MODEL ****************/
+/***********DESTROY MODEL ****************/
 rails destroy model workspace
 rails destroy model user
-rails destroy model users_workspace
+rails destroy model userworkspace
 rails destroy model group
-rails destroy model groups_user
-rails destroy model group_conversation
-rails destroy model group_thread
-
-
-
-
-
-
-
+rails destroy model groupuser
+rails destroy model groupconversation
+rails destroy model groupthread
 
 
 //////////////////////////////
@@ -39,25 +32,56 @@ rails g model user_conversation message:text image:string file:string receiver_i
 
 rails destroy model user_thread
 rails g model user_thread  thread_message:text  receiver_id:integer user_conversation:belongs_to
+/////////////////////////////////////////////////
+rails generate migration remove_COLUMNNAME_from_TABLENAME COLUMNNAME:DATATYPE
+rails generate migration remove_password_from_users password:string
 
 
+/***************CREATE CONTROLLER********************/
 
-
-/***************CREATE CONTROLLER  ***********/
 rails destroy  controller workspace
 rails g controller workspace
 
+rails destroy  controller user
+rails g controller user
 
 rails destroy  controller group
 rails g controller group
 
+rails destroy controller home
+rails g controller home
 
-//add attribute to table
-rails destroy migration add_purpose_email_access_to_group
-rails generate migration add_purpose_email_access_to_group purpose:string email:string access_type:boolean 
+rails destroy controller groupuser
+rails g controller groupuser
 
-add_column :group, :purpose,:string,:email,:string ,:access_type,:boolean
+rails destroy controller userworkspace
+rails g controller userworkspace
 
+
+************add attribute to table************
+
+rails destroy migration add_level_to_userworkspace
+rails g migration add_level_to_userworkspace level:string
+......................................................
+
+rails destroy migration add_level_to_group
+rails g migration add_level_to_group level:string
+....................................................
+
+rails destroy migration add_level_to_groupuser
+rails g migration add_level_to_groupuser level:string
+....................................................
+
+
+
+
+rails g migration add_password_digest_to_users password_digest:string
+......................................................
+
+//
+rails destroy migration add_level_to_groupuser
+rails g migration add_level_to_groupuser level:string
+......................................................
 rails db:migrate
 
 
@@ -68,6 +92,7 @@ def change
     add_column :workspaces, :admin, :boolean, default:true
 end
 
+
 ///remove columns 
 rails destroy migration remove_email_from_group  
 rails g migration remove_email_from_group email:string
@@ -75,3 +100,7 @@ rails g migration remove_email_from_group email:string
 
 rails destroy controller searchs
 rails g controller searchs
+
+
+rails generate migration add_name_to_user name:string 
+rails destroy migration add_name_to_user  

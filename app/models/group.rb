@@ -1,5 +1,9 @@
 class Group < ApplicationRecord
   belongs_to :workspace
-  has_and_belongs_to_many :users
-  has_many :group_conversations
+
+  has_many :groupusers, dependent: :destroy
+  has_many :users, through: :groupusers
+  
+  has_many :groupconversations
+  
 end

@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-center">
+<div class="row">
+  <div class="col-sm-8">
+            <table class="table table-hover">
+            <thead>
+                <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                   <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td>
+                    
+                    <% if !user.groupusers.find_by(group_id: params[:group_id]).nil? %>
+                     <% if user.groupusers.find_by(group_id: params[:group_id]).level=="member" %>  
+<%= link_to "Uninvite", group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>    
+                     <% end %>
+                    
+                    <% if user.groupusers.find_by(group_id: params[:group_id]).level.empty? %>
+ <%= link_to "Invite",group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+                    <% end %>
+                    <% end %>
+
+                    <% if user.groupusers.find_by(group_id: params[:group_id]).nil? %> 
+<%= link_to "Invite", group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+                    <% end %>
+
+                    </td>
+                            
+                    </tr>
+                    <% end %>
+                    
+            </tbody>
+        </table>
+</div>
+</div>
+<p id="new_article"><p>
+</div>

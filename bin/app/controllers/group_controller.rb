@@ -27,7 +27,7 @@ class GroupController < ApplicationController
        @group= Group.find(params[:id])
     if @group.update_attributes(group_params)
       
-      redirect_to :action => "show", :id => @group.id
+      render "show", :id => @group.id
       
     else
       flash[:danger] = "Update is not success."

@@ -10,24 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_030311) do
+ActiveRecord::Schema.define(version: 2019_07_25_085144) do
 
-  create_table "group_conversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "groupconversations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "message"
-    t.integer "receiver_id"
+    t.bigint "user_id"
     t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_group_conversations_on_group_id"
-  end
-
-  create_table "group_threads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "thread_message"
-    t.integer "receiver_id"
-    t.bigint "group_conversation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_conversation_id"], name: "index_group_threads_on_group_conversation_id"
+    t.index ["group_id"], name: "index_groupconversations_on_group_id"
+    t.index ["user_id"], name: "index_groupconversations_on_user_id"
   end
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -37,51 +29,58 @@ ActiveRecord::Schema.define(version: 2019_07_08_030311) do
     t.bigint "workspace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "level"
     t.index ["workspace_id"], name: "index_groups_on_workspace_id"
   end
 
-  create_table "groups_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "groupthreads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "thread_message"
+    t.bigint "groupconversation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["groupconversation_id"], name: "index_groupthreads_on_groupconversation_id"
+  end
+
+  create_table "groupusers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "group_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_groups_users_on_group_id"
-    t.index ["user_id"], name: "index_groups_users_on_user_id"
+    t.string "level"
+    t.index ["group_id"], name: "index_groupusers_on_group_id"
+    t.index ["user_id"], name: "index_groupusers_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "users_workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "userworkspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "workspace_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_users_workspaces_on_user_id"
-    t.index ["workspace_id"], name: "index_users_workspaces_on_workspace_id"
+    t.string "level"
+    t.index ["user_id"], name: "index_userworkspaces_on_user_id"
+    t.index ["workspace_id"], name: "index_userworkspaces_on_workspace_id"
   end
 
   create_table "workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: true
   end
 
-  add_foreign_key "group_conversations", "groups"
-  add_foreign_key "group_threads", "group_conversations"
+  add_foreign_key "groupconversations", "groups"
+  add_foreign_key "groupconversations", "users"
   add_foreign_key "groups", "workspaces"
-  add_foreign_key "groups_users", "groups"
-  add_foreign_key "groups_users", "users"
-  add_foreign_key "users_workspaces", "users"
-  add_foreign_key "users_workspaces", "workspaces"
+  add_foreign_key "groupthreads", "groupconversations"
+  add_foreign_key "groupusers", "groups"
+  add_foreign_key "groupusers", "users"
+  add_foreign_key "userworkspaces", "users"
+  add_foreign_key "userworkspaces", "workspaces"
 end
