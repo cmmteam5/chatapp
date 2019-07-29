@@ -1,6 +1,6 @@
 <% provide(:title, "Log in") %>
 <h1>Log in</h1>
-<div class="row">
+<div class="login">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:session, url: login_path) do |f| %>
       <%= f.label :email %>
@@ -9,7 +9,16 @@
       <%= f.password_field :password, class: 'form-control' %>
       <br>
       <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= link_to "Cancel", root_path, class:"btn btn-primary margin-left" %>
     <% end %><br>
-    <p><i>New user?</i> <%= link_to "Sign up now!", new_user_path %></p>
-  </div>
+    <p><i>New user?</i> <%= link_to "Sign up now!", new_user_path  ,class: 'link_color' %></p>
+    
+  </div>   
 </div>
+<div class="language">
+    <p> Choose Language:
+    <%= link_to "English",{:locale=>'en'},class: "btn btn-primary" %>    
+    <%= link_to  "日本語",{:locale=>'ja'} , class: "btn btn-primary margin-left" %>
+<div>
+    
+      

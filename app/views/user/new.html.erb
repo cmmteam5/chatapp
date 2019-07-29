@@ -20,10 +20,12 @@
           </ul>
         </div>
       <% end %>
+
       <br>
-      <%= f.submit "Create my account",  class: "btn btn-primary" %>
-      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-      <%= f.submit "Cancel",  class: "btn btn-primary" %>
+      <div class="button">
+        <%= f.submit "Create my account",  class: "btn btn-primary" %>
+        <%= link_to "Cancel", root_path, class:"btn btn-primary margin-left" %> 
+      </div>
     <% end %>
   </div>
 </div>

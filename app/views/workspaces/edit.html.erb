@@ -1,13 +1,14 @@
 <h2 class="text-align">Edit Workspaces</h2>
-<div class="b">
+<div class="editform">
   <%= form_for @workspace do |form| %>    
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-inline">
-          <%= form.label :Workspace_Name %>
+    <div class="field">
+      
+          <%= form.label :Workspace_Name, class: "col-md-4 control-label" %>
+          <div class="col-md-5">
           <%= form.text_field :name,class: 'form-control form-control-sm', placeholder: 'Eg. CMM' %>
-        </div>
-        <br> 
+      </div>
+      </div><br>
+        
 
         <% if @workspace.errors.any? %>
           <div id="errorExplanation">
@@ -18,13 +19,11 @@
             </ul>
           </div>
         <% end %>
-        <div>
-          <%= form.submit "Update", class: "btn btn-primary" %>
-          <%= form.submit "Cancel", class: "btn btn-primary" %><br>
-          <%= link_to 'Back', workspace_path %>
-        </div>
-      </div>
-    </div>
+        <div id="update"> 
+            <%= form.submit "Update", class: "btn btn-primary" %>
+            <%= link_to "Cancel", workspace_path, class:"btn btn-primary margin-left" %> 
+            
+            </div>
   <% end %>
 </div>
 
