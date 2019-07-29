@@ -1,0 +1,22 @@
+<div id="message_container" >
+    <% @groupconversations.each do |sms| %>
+        <div> <%= sms.user.name%>
+          <div>
+            <span class="style"><%=sms.message %></span>                             
+            <%= link_to fa_icon("trash"), groupconversation_path(sms), method: "delete" %>        
+            <p class="time"><%= sms.created_at %></p>
+          </div>
+        </div>
+    <% end %>    
+</div> 
+
+
+<div class="message" >
+  <%= form_with(model: @message) do |f| %>
+    <%= f.hidden_field :group_id, value: @group.id ,name:"group_id" %> 
+    <div class="form-group">
+      <%= f.text_area :message, name:'message', class: 'form-control', placeholder: 'Let us Chit-Chat' %>   
+      <%= f.submit "Send", class: 'btn btn-dark btn-lg'  %>
+    </div> 
+  <% end %>  
+</div>

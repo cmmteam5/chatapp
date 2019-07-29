@@ -1,0 +1,35 @@
+<h2 class="text-align">Edit Workspaces</h2>
+<div class="b">
+  <%= form_for @workspace do |form| %>    
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-inline">
+          <%= form.label :Workspace_Name %>
+          <%= form.text_field :name,class: 'form-control form-control-sm', placeholder: 'Eg. CMM' %>
+        </div>
+        <br> 
+
+        <% if @workspace.errors.any? %>
+          <div id="errorExplanation">
+            <ul>
+              <% @workspace.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div>
+          <%= form.submit "Update", class: "btn btn-primary" %>
+          <%= form.submit "Cancel", class: "btn btn-primary" %><br>
+          <%= link_to 'Back', workspace_path %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+
+

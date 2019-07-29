@@ -42,7 +42,7 @@ class WorkspacesController < ApplicationController
 
   def destroy
     Workspace.destroy(params[:id])
-    redirect_to workspaces_url,notice: "Workspace was successfully deleted."
+    redirect_to new_workspaces_path,notice: "Workspace was successfully deleted."
 
   end
 

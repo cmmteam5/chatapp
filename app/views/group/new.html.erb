@@ -1,26 +1,42 @@
-<h2>Create_Group </h2>
-<div class="newgroup">
-<div class="col-md-6 col-md-offset-3">
+<h2>Create Group</h2>
+<div class="a">
   <%= form_for(@group, url: {action:"create"}) do |form| %>
+    <div class="field">
+      <%= form.label :Group_Name, class: "col-md-4 control-label" %>
+        <div class="col-lg-5">
+           <%= form.text_field :name, name:"name", class: "form-control" %>
+        </div>
+    </div>
     
-      <%= form.label :'Group_Name', class: "col-md-4 control-label" %>
-      <%= form.text_field :name, name:"name",class: "form-control" %>
-      <br>
-      <%= form.label :'Purpose', class: "col-md-4 control-label" %>
-      <%= form.text_field :purpose,name:"purpose",class: "form-control" %>
-      <br>
-      <%= radio_button_tag(:ass_typ, "true") %>Public 
-      &nbsp&nbsp&nbsp&nbsp
-      <%= radio_button_tag(:ass_typ, "false") %>Private 
-      <br>
-      <p id="demo"></p>
-      <%= form.submit 'Create', class: "btn btn-primary" %>
-      <%= form.submit 'Cancel', class: "btn btn-primary margin-left" %>  
+    <div class="form-group">
+      <%= form.label :Purpose, class: "col-md-4 control-label" %>
+        <div class="col-lg-5">
+          <%= form.text_field :purpose, name:"purpose",class: "form-control" %>
+        </div>
+    </div>
+
+    <div>
+        <%= form.hidden_field :workspace_id, value: @workspace.id ,name:"workspace_id" %>
+    </div>
+
+    <div class="col-lg-5">
+      <%= radio_button_tag(:ass_typ, "true") %>Public
+      <%= radio_button_tag(:ass_typ, "false") %>Private
+    </div>    
+    
+    <p id="demo"></p>
+ 
+    <div class="col-lg-5">
+      <%= form.submit "Create", class: "btn btn-primary" %>
+      <%= form.submit "Cancel", class: "btn btn-primary margin-left" %>
+    </div>
   <% end %>
 </div>
-</div>
 <script>  
-   function add_ass_typ(a){    
+function add_ass_typ(a){      
     }
-
 </script>
+  
+
+ 
+
