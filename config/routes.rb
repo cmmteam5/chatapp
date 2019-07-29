@@ -1,9 +1,9 @@
 Rails.application.routes.draw do  
 
   #scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
-
-  root 'home#home'
-  get  '/login',   to: 'session#new'
+  root 'session#new'
+  #root 'home#home'
+  #get  '/login',   to: 'session#new'
   post '/login',   to: 'session#create'
   delete'/logout',  to: 'session#destroy'
   get '/search', to:'search#search'
