@@ -29,6 +29,11 @@ class WorkspacesController < ApplicationController
         @workspace = Workspace.find(session[:current_workspace])        
         @group = Group.all     
         @group = Group.where(:workspace => @workspace.id)     
+        @groupuser=Groupuser.all
+        @user=User.all
+        @userworkspace=Userworkspace.where(:workspace =>@workspace.id)
+        @groupuser=Groupuser.where(:group =>@group.ids)
+
     end
     
     def edit

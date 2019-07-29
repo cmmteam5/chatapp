@@ -28,17 +28,49 @@
               </div>
           </div>    
         </li> 
-
         <li class="nav-item">
-          <a class="nav-link" href="#">Friend</a>
-        </li>  
+        <div class="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Friend</a>
+          <div class="dropdown-menu">                  
+            
+           <% if !@userworkspace.nil? %>
+            <% @userworkspace.each do |wkuser| %>
+                <% if wkuser.level == "owner" %>
+                   <span><%= wkuser.user.name %>-(You)</span><br>     
+                <% end %>
+               
+                <% if wkuser.level == "member" %>
+                   <span><%= wkuser.user.name %></span><br>
+              
+                <% end %>
+                
+                <% end %>
+                <% end %>
+              
+                   
+          </div>
+        </div>
+        </li>       
 
         <li class="nav-item">
           <a class="nav-link" href="#">Starred</a>
         </li>    
 
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+        <div class="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        About</a>
+          <div class="dropdown-menu">                  
+           <div id="about-container">
+           <p><h4>TEAM 5 </h4></p>
+           <p>Shoon Lae Khaing</p>
+           <p>Yin Nyein Aye</p>
+           <p>Zin Zin Myo Lwin</p>
+           <p>May Thu Myat</p>
+         </div>
+         </div>
+         </div>
         </li>
 
         <li class="nav-item">
@@ -49,18 +81,32 @@
   <div class="wrapper"> 
       <nav id="sidebar"> 
         <h4>Groups </h4>  
-          <ul class="# ">
+          <ul class="sidebarul">
+           
               <% @group.each do |groups| %>
-                <li><%= link_to groups.name , group_path(groups) %></li>
-                <div class="dropdown-menu1" > 
-                <%= link_to 'Invite',group_groupuser_index_path(groups.id) %></br>
-                <%= link_to 'Edit', edit_group_path(groups.id) %></br>
-                <%= link_to 'Destroy', group_path(groups.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-                </div>
+              <li>
+              <div class="dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%=  groups.name %></a>
+              <div class="dropdown-menu">
+              <ul>
+              <%= link_to fa_icon("pencil"),edit_group_path(groups.id),class: "dropdown-item" %><span>Edit</span>
+              <%= link_to fa_icon("trash-o"), group_path(groups.id), method: :delete, data: { confirm: 'Are you sure?' },class: "dropdown-item" %><span>Delete</span>
+              <%= link_to fa_icon("user-plus"),group_groupuser_index_path(groups.id),class: "dropdown-item" %><span>Invite</span>
+              <%= link_to fa_icon("envelope"),group_path(groups),class: "dropdown-item" %><span>Message</span><br>
+              
+          
+              </ul>
+              </div>
+              </div>
+              </li>
               <% end %>  
+              
+              
+
           </ul>   
       </nav>
   </div>
-
+  
 
 

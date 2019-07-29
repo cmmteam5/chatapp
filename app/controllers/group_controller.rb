@@ -32,6 +32,8 @@ class GroupController < ApplicationController
         session[:currentgroup]=@group.id 
         @message =Groupconversation.new 
         @groupconversations=Groupconversation.where(:group => @group.id)
+        @groupuser=Groupuser.where(:group =>@group.id)
+
     end
 
     def edit
