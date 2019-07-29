@@ -5,14 +5,17 @@
   background-color:lightgoldenrodyellow;
   color:black;
 }
+
 #message_container{
   background-color:#aed6f1;
   position: absolute;top:0;bottom:140px;left:0;right:0;
   overflow: scroll;
 }
+
 .time{
   font-size:12px;
 }
+
 .message{
   position:fixed;bottom: 0;
   height:140px;

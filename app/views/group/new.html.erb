@@ -22,7 +22,17 @@
     <div class="col-lg-5">
       <%= radio_button_tag(:ass_typ, "true") %>Public
       <%= radio_button_tag(:ass_typ, "false") %>Private
-    </div>    
+    </div> 
+
+    <% if @group.errors.any? %>
+          <div id="errorExplanation">
+            <ul>
+              <% @group.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>   
     
     <p id="demo"></p>
  

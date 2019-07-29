@@ -26,20 +26,20 @@ class WorkspacesController < ApplicationController
 
     def show
         logger.info "-----Show #{params[:id]}-------"
-        @workspace = Workspace.find(session[:current_workspace])        
+        @workspace = Workspace.find(params[:id])        
         @group = Group.all     
         @group = Group.where(:workspace => @workspace.id)     
     end
     
     def edit
         logger.info "-----Edit #{params[:id]}-------"
-        @workspace = Workspace.find(params[:id])
+        @workspace = Workspace.find(params[:id]) 
         @groups = Group.all
     end
     
     def update
         logger.info "-----Update #{params[:id]}-------"
-        @workspace = Workspace.find(params[:id])
+        @workspace = Workspace.find(params[:id]) 
         if @workspace.update_attributes(workspace_params)    
            @userWorkspace =Userworkspace.find_by(workspace_id: @workspace.id)
            flash[:success] = "#{t('Profile updated')}"

@@ -14,15 +14,17 @@ class GroupController < ApplicationController
       
     def create
         logger.info "-----Create #{params[:id]}------"
-        @workspace=Workspace.find(params[:workspace_id])
+        @workspace = Workspace.find(session[:current_workspace])
         @c=Workspace.last     
         @group = Group.new(name:params[:name],purpose:params[:purpose],access_type:params[:ass_typ],workspace_id:@c.id,level:"owner")        
           if @group.save
             session[:current_group]=@group.id
             @b=Group.last
             @currentgroup=Groupuser.create(user_id:current_user.id,group_id:@b.id,level:"owner")
-            @currentgroup.save          
-            redirect_to workspace_path(@workspace)          
+            @currentgroup.save 
+            flash[:alert] = "Invalid field."         
+            redirect_to workspace_path(@workspace)  
+                    
           end
     end
 
@@ -30,6 +32,7 @@ class GroupController < ApplicationController
         logger.info "-----Show #{params[:id]}------"
         @group = Group.find(params[:id])        
         session[:currentgroup]=@group.id 
+        @workspace = Workspace.find(session[:current_workspace])
         @message =Groupconversation.new 
         @groupconversations=Groupconversation.where(:group => @group.id)
     end
@@ -37,13 +40,15 @@ class GroupController < ApplicationController
     def edit
         logger.info "-----Edit #{params[:id]}------"
         @group = Group.find(params[:id])
+        @workspace = Workspace.find(session[:current_workspace])
     end
     
     def update
         logger.info "-----Update #{params[:id]}------"
         @group= Group.find(params[:id])
-        if @group.update_attributes(group_params)       
-           redirect_to workspace_path       
+        if @group.update_attributes(group_params)
+        @workspace = Workspace.find(session[:current_workspace])      
+        redirect_to workspace_path(@workspace)       
         else
            flash[:danger] = "Update is not success."
            render "edit"

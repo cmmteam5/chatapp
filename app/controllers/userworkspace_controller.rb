@@ -3,6 +3,7 @@ class UserworkspaceController < ApplicationController
     def index
         logger.info "-----Index-------"
         @users = User.where.not(id: current_user)
+        @workspace = Workspace.find(params[:workspace_id])
     end
   
     def update

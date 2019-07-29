@@ -2,7 +2,8 @@ class GroupuserController < ApplicationController
 
     def index 
         logger.info "-----index------"
-        @users = User.where.not(id: current_user)           
+        @users = User.where.not(id: current_user)
+        @workspace =Workspace.find(session[:current_group])          
     end
 
     def update
