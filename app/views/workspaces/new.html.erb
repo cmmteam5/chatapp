@@ -4,14 +4,15 @@
     <%= form_for @workspace, url: {action: "create"} do |form| %>     
       <%= form.label :"#{t('workspace_name')}" %>
       <%= form.text_field :name,class:"form-control" , placeholder: 'Eg. CMM' %>
-      <% if @workspace.errors.any? %>
-        <div id="errorExplanation">
-          <ul>
-            <% @workspace.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
+
+        <% if @workspace.errors.any? %>
+          <div id="errorExplanation">
+            <ul>
+              <% @workspace.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>     
       <br>
       <%= form.submit "#{t('create')}", class: "btn btn-primary" %>

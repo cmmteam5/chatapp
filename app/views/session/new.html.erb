@@ -1,25 +1,25 @@
 <% provide(:title, "Log in") %>
 <h1><%= t :log_in %></h1>
 
-<div class="login">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
-      <%= f.label :"#{t('email')}" %>
-      <%= f.email_field :email, class: 'form-control' %>
-      <%= f.label :"#{t('password')}" %>
-      <%= f.password_field :password, class: 'form-control' %>
+  <div class="login">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <%= f.label :"#{t('email')}" %>
+        <%= f.email_field :email, class: 'form-control' %>
+        <%= f.label :"#{t('password')}" %>
+        <%= f.password_field :password, class: 'form-control' %>
+        <br>
+        <%= f.submit "#{t('log_in')}", class: "btn btn-primary" %>
+        <%= link_to "#{t('cancel')}", root_path, class:"btn btn-primary margin-left" %>
+      <% end %>
       <br>
-      <%= f.submit "#{t('log_in')}", class: "btn btn-primary" %>
-      <%= link_to "#{t('cancel')}", root_path, class:"btn btn-primary margin-left" %>
-    <% end %><br>
-    <p><i><%= t :new_user %></i> &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp <%= link_to "#{t('sign_up_now')}", new_user_path  ,class: 'link_color' %></p>
-    
-  </div>   
-</div>
-<div class="language">
+      <p><i><%= t :new_user %></i> &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp <%= link_to "#{t('sign_up_now')}", new_user_path  ,class: 'link_color' %></p> 
+    </div>   
+  </div>
+  <div class="language">
     <p><%= t :choose_language %>
     <%= link_to "English",{:locale=>'en'},class: "btn btn-primary" %>    
     <%= link_to  "日本語",{:locale=>'ja'} , class: "btn btn-primary margin-left" %>
-<div>
+  <div>
     
       

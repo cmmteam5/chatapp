@@ -17,11 +17,11 @@ class GroupController < ApplicationController
         @workspace = Workspace.find(session[:current_workspace])            
         @group = Group.new(name:params[:name],purpose:params[:purpose],access_type:params[:ass_typ],workspace_id:@workspace.id,level:"owner")        
           if @group.save
-            session[:current_group]=@group.id
-            @b=Group.last
-            @currentgroup=Groupuser.create(user_id:current_user.id,group_id:@b.id,level:"owner")
-            @currentgroup.save                  
-            redirect_to workspace_path(@workspace),notice:"#{t('gp_created')}"  
+             session[:current_group]=@group.id
+             @b=Group.last
+             @currentgroup=Groupuser.create(user_id:current_user.id,group_id:@b.id,level:"owner")
+             @currentgroup.save                  
+             redirect_to workspace_path(@workspace),notice:"#{t('gp_created')}"  
                     
           end
     end
@@ -48,8 +48,8 @@ class GroupController < ApplicationController
         logger.info "-----Update #{params[:id]}------"
         @group= Group.find(params[:id])
         if @group.update_attributes(group_params)
-        @workspace = Workspace.find(session[:current_workspace])      
-        redirect_to workspace_path(@workspace)       
+           @workspace = Workspace.find(session[:current_workspace])      
+           redirect_to workspace_path(@workspace)       
         else
            flash[:danger] = "Update is not success."
            render "edit"

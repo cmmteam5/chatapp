@@ -2,25 +2,25 @@
 <div class="editform">
   <%= form_for @workspace do |form| %>    
     <div class="field">
-          <%= form.label :"#{t('workspace_name')}", class: "col-md-4 control-label" %>
-          <div class="col-md-5">
+      <%= form.label :"#{t('workspace_name')}", class: "col-md-4 control-label" %>
+        <div class="col-md-5">
           <%= form.text_field :name,class: 'form-control form-control-sm', placeholder: 'Eg. CMM' %>
-      </div>
-      </div><br>
-        <% if @workspace.errors.any? %>
-          <div id="errorExplanation">
-            <ul>
-              <% @workspace.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+        </div>
+    </div>
+    <br>
+          <% if @workspace.errors.any? %>
+            <div id="errorExplanation">
+              <ul>
+                <% @workspace.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
         <div id="update"> 
             <%= form.submit "#{t('edit')}", class: "btn btn-primary" %>
-            <%= link_to "#{t('cancel')}", workspace_path, class:"btn btn-primary margin-left" %> 
-            
-            </div>
+            <%= link_to "#{t('cancel')}", workspace_path, class:"btn btn-primary margin-left" %>    
+        </div>
   <% end %>
 </div>
 
