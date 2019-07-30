@@ -1,11 +1,21 @@
-<%= form_for(Workspace.new,url: {action:"search"}) do |f| %>    
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-	<div>  
-	  <%= button_to "Search", action: "search" %>
-	</div>   
-<% end %>
-<%= link_to 'Back', workspaces_path %>
+<div class="d-flex justify-content-center">
+  <%= form_tag( "search", method: "post", class:"form-inline") do %>
+  <div class="form-group mx-sm-3 mb-2">  
+   Email &nbsp <input type="text" name="email" class="form-control" value="<%= current_user.email %>">
+  </div>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= submit_tag('Search',class:"btn btn-primary mb-2") %>
+</div>
 
+<div class="d-flex justify-content-center">
+  <div class="col-sm-4">
+   <ul class="list-group">
+    <% if @workspaces == "null" %>       
+    <% else %>
+    <%= render partial: 'work', collection:@workspace_list %>
+    <% end %>
+   </ul>
+  </div>
+</div> 
+  <% end %>
+</div>
