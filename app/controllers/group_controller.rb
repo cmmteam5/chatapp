@@ -14,15 +14,13 @@ class GroupController < ApplicationController
       
     def create
         logger.info "-----Create #{params[:id]}------"
-        @workspace = Workspace.find(session[:current_workspace])
-        @c=Workspace.last     
-        @group = Group.new(name:params[:name],purpose:params[:purpose],access_type:params[:ass_typ],workspace_id:@c.id,level:"owner")        
+        @workspace = Workspace.find(session[:current_workspace])            
+        @group = Group.new(name:params[:name],purpose:params[:purpose],access_type:params[:ass_typ],workspace_id:@workspace.id,level:"owner")        
           if @group.save
             session[:current_group]=@group.id
             @b=Group.last
             @currentgroup=Groupuser.create(user_id:current_user.id,group_id:@b.id,level:"owner")
-            @currentgroup.save 
-            flash[:alert] = "Invalid field."         
+            @currentgroup.save                  
             redirect_to workspace_path(@workspace)  
                     
           end
@@ -33,6 +31,7 @@ class GroupController < ApplicationController
         @group = Group.find(params[:id])        
         session[:currentgroup]=@group.id 
         @workspace = Workspace.find(session[:current_workspace])
+        @groups = Group.where(:workspace => session[:current_workspace])
         @message =Groupconversation.new 
         @groupconversations=Groupconversation.where(:group => @group.id)
         @groupuser=Groupuser.where(:group =>@group.id)
@@ -61,7 +60,7 @@ class GroupController < ApplicationController
         logger.info "-----Destroy #{params[:id]}------"
         Group.find(params[:id]).destroy
         @workspace=Workspace.find(session[:current_workspace]) 
-        redirect_to workspace_path(@workspace)
+        redirect_to @workspace
     end    
     
     private

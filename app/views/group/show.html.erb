@@ -16,7 +16,8 @@
     <%= f.hidden_field :group_id, value: @group.id ,name:"group_id" %> 
     <div class="form-group">
       <%= f.text_area :message, name:'message', class: 'form-control', placeholder: 'Let us Chit-Chat' %>   
-      <%= f.submit "Send", class: 'btn btn-dark btn-lg'  %>
+      <%= f.submit "Send", class: 'btn btn-dark btn-lg'  %>&nbsp&nbsp &nbsp&nbsp 
+      <%= link_to fa_icon("arrow-left"), @workspace %> 
     </div> 
   <% end %>  
 </div>

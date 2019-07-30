@@ -13,8 +13,7 @@ class WorkspacesController < ApplicationController
     def create 
         logger.info "-----Create #{params[:id]}-------"  
         @workspace = Workspace.new(workspace_params)
-        if @workspace.save
-          session[:current_workspace]=@workspace.id
+        if @workspace.save          
           @c=Workspace.last
           @userWorkspace=Userworkspace.new(workspace_id:@c.id,user_id:current_user.id,level:"owner")
           @userWorkspace.save
@@ -26,13 +25,13 @@ class WorkspacesController < ApplicationController
 
     def show
         logger.info "-----Show #{params[:id]}-------"
-        @workspace = Workspace.find(params[:id])        
-        @group = Group.all     
+        @workspace = Workspace.find(params[:id])     
         @group = Group.where(:workspace => @workspace.id)     
         @groupuser=Groupuser.all
         @user=User.all
         @userworkspace=Userworkspace.where(:workspace =>@workspace.id)
         @groupuser=Groupuser.where(:group =>@group.ids)
+        session[:current_workspace]=@workspace.id
 
     end
     
@@ -61,7 +60,9 @@ class WorkspacesController < ApplicationController
       logger.info "-----Destroy #{params[:id]}-------"
         Workspace.destroy(params[:id])
         redirect_to new_workspace_path,notice:"#{t('Workspace was successfully deleted')}"
-    end    
+    end  
+    
+    
      
     private    
     def workspace_params
