@@ -30,4 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+Log_in: "Log in"
+email: "email"
+password: "password"
+Cancel: "Cancel"
+WELCOME_TO_CMM_CHAT_APPLICATION: "WELCOME TO CMM CHAT APPLICATION"
+
    
