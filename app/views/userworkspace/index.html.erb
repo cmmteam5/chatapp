@@ -1,11 +1,12 @@
-<div class="d-flex justify-content-center">
+<h4><%= t('invite_friend') %></h4>
+
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-lg-8">
         <table class="table table-hover">
           <thead>
             <tr>
-                <th>No</th>
-                <th>Name</th>
+                <th><%= t('no') %></th>
+                <th><%= t('name') %></th>
                 <th> </th>
             </tr>
           </thead>
@@ -18,16 +19,16 @@
                     
                        <% if !user.userworkspaces.find_by(workspace_id: params[:workspace_id]).nil? %>
                         <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).level=="member" %>  
-   <%= link_to "Uninvite",workspace_userworkspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>    
+   <%= link_to "#{t('uninvite')}",workspace_userworkspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-md", id: user.id %>    
                         <% end %>
                        
                        <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).level.empty? %>
-    <%= link_to "Invite",workspace_userworkspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+    <%= link_to "#{t('invite')}",workspace_userworkspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-md", id: user.id %>
                        <% end %>
                        <% end %>
    
                        <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).nil? %> 
-   <%= link_to "Invite",workspace_userworkspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+   <%= link_to "#{t('invite')}",workspace_userworkspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-md", id: user.id %>
                        <% end %>
    
                        </td>
@@ -37,11 +38,11 @@
                        
                </tbody>
            </table>
-           <%= link_to 'Back', @workspace %>
+           <%= link_to "#{t('back')}", @workspace %>
    </div>
    
    </div>
    
-   </div>
+   
 
 

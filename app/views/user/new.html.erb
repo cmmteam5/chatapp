@@ -1,14 +1,14 @@
-<h1>Sign up</h1>
+<h1><%= t('sign_up') %></h1>
 <div class="newform">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @user, url: {action: "create"} do |f| %>     
-      <%= f.label :name %>
+      <%= f.label :"#{t('name')}" %>
       <%= f.text_field :name, name:"name", class: 'form-control' %>
 
-      <%= f.label :email %>
+      <%= f.label :"#{t('email')}" %>
       <%= f.email_field :email, name:"email", class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :"#{t('password')}" %>
       <%= f.password_field :password, name:"password",class: 'form-control' %>
 
       <% if @user.errors.any? %>
@@ -23,8 +23,8 @@
 
       <br>
       <div class="button">
-        <%= f.submit "Create my account",  class: "btn btn-primary" %>
-        <%= link_to "Cancel", root_path, class:"btn btn-primary margin-left" %> 
+        <%= f.submit "#{t('create_my_account')}",  class: "btn btn-primary" %>
+        <%= link_to "#{t('cancel')}", root_path, class:"btn btn-primary margin-left" %> 
       </div>
     <% end %>
   </div>

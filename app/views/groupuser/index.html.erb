@@ -1,12 +1,13 @@
-<div class="d-flex justify-content-center">
+<h4><%= t('invite_friend') %></h4>
+
 <div class="row">
   <div class="col-sm-8">
             <table class="table table-hover">
             <thead>
                 <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th><%= t('no') %></th>
+                <th><%= t('name') %></th>
+                <th><%= t('email') %></th>
                 <th> </th>
                 </tr>
             </thead>
@@ -20,16 +21,16 @@
                     
                     <% if !user.groupusers.find_by(group_id: params[:group_id]).nil? %>
                      <% if user.groupusers.find_by(group_id: params[:group_id]).level=="member" %>  
-<%= link_to "Uninvite", group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>    
+<%= link_to "#{t('uninvite')}", group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>    
                      <% end %>
                     
                     <% if user.groupusers.find_by(group_id: params[:group_id]).level.empty? %>
- <%= link_to "Invite",group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+ <%= link_to "#{t('invite')}",group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
                     <% end %>
                     <% end %>
 
                     <% if user.groupusers.find_by(group_id: params[:group_id]).nil? %> 
-<%= link_to "Invite", group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+<%= link_to "#{t('invite')}", group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
                     <% end %>
 
                     </td>
@@ -39,8 +40,5 @@
                     
             </tbody>
         </table>
-        <%= link_to 'Back', @workspace %>
-</div>
-</div>
-<p id="new_article"><p>
+        <%= link_to "#{t('back')}", @workspace %>
 </div>

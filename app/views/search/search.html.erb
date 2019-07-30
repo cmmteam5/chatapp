@@ -1,10 +1,10 @@
 <div class="d-flex justify-content-center">
   <%= form_tag( "search", method: "post", class:"form-inline") do %>
   <div class="form-group mx-sm-3 mb-2">  
-   Email &nbsp <input type="text" name="email" class="form-control" value="<%= current_user.email %>">
+  <%= t :email %> &nbsp <input type="text" name="email" class="form-control" value="<%= current_user.email %>">
   </div>
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <%= submit_tag('Search',class:"btn btn-primary mb-2") %>
+  <%= submit_tag("#{t('search')}",class:"btn btn-primary mb-2") %>
 </div>
 
 <div class="d-flex justify-content-center">

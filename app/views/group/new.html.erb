@@ -1,15 +1,15 @@
-<h2>Create Group</h2>
+<h2><%= t('create_group') %></h2>
 <div class="newgroup">
   <%= form_for(@group, url: {action:"create"}) do |form| %>
     <div class="field">
-      <%= form.label :Group_Name, class: "col-md-4 control-label" %>
+      <%= form.label :"#{t('group_name')}", class: "col-md-4 control-label" %>
         <div class="col-lg-5">
            <%= form.text_field :name, name:"name", class: "form-control" %>
         </div>
     </div>
     
     <div class="form-group">
-      <%= form.label :Purpose, class: "col-md-4 control-label" %>
+      <%= form.label :"#{t('purpose')}", class: "col-md-4 control-label" %>
         <div class="col-lg-5">
           <%= form.text_field :purpose, name:"purpose",class: "form-control" %>
         </div>
@@ -20,8 +20,8 @@
     </div>
 
     <div class="col-lg-5">
-      <%= radio_button_tag(:ass_typ, "true") %>Public
-      <%= radio_button_tag(:ass_typ, "false") %>Private
+      <%= radio_button_tag(:ass_typ, "true") %><%= t :public %>
+      <%= radio_button_tag(:ass_typ, "false") %><%= t :private %>
     </div> 
 
     <% if @group.errors.any? %>
@@ -37,8 +37,8 @@
     <p id="demo"></p>
  
     <div class="col-lg-5">
-      <%= form.submit "Create", class: "btn btn-primary" %>
-      <%= link_to "Cancel",   @workspace , class:"btn btn-primary margin-left" %> 
+      <%= form.submit "#{t('create')}", class: "btn btn-primary" %>
+      <%= link_to "#{t('cancel')}",   @workspace , class:"btn btn-primary margin-left" %> 
     </div>
   <% end %>
 </div>

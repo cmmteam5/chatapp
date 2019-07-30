@@ -1,8 +1,8 @@
-<h2> Create Your Workspace</h2>
+<h2><%= t('create_your_workspace') %></h2>
 <div class="newworkspace">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @workspace, url: {action: "create"} do |form| %>     
-      <%= form.label :'Workspace Name'%>
+      <%= form.label :"#{t('workspace_name')}" %>
       <%= form.text_field :name,class:"form-control" , placeholder: 'Eg. CMM' %>
 
       <% if @workspace.errors.any? %>
@@ -15,8 +15,8 @@
         </div>
       <% end %>     
       <br>
-      <%= form.submit 'Create', class: "btn btn-primary" %>
-      <%= link_to "Cancel", new_static_page_path, class:"btn btn-primary margin-left" %> 
+      <%= form.submit "#{t('create')}", class: "btn btn-primary" %>
+      <%= link_to "#{t('cancel')}", new_static_page_path, class:"btn btn-primary margin-left" %> 
     <% end %>
   </div>
 </div>

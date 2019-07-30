@@ -16,7 +16,7 @@ module ChattingApp
    config.eager_load_paths << Rails.root.join("lib")
    config.time_zone='Tokyo'    
    config.i18n.available_locales = [:en, :ja]
-   config.i18n.default_locale = :ja
+   config.i18n.default_locale = :en
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :"#{t('group_name')}" %>
     <%= form.text_field :name %>
   </div>
  
   <div class="actions">
-  <%= form.submit "Update", class: "btn btn-primary" %>
-  <%= link_to "Cancel", @workspace , class:"btn btn-primary margin-left" %> 
+  <%= form.submit "#{t('edit')}", class: "btn btn-primary" %>
+  <%= link_to "#{t('cancel')}", @workspace , class:"btn btn-primary margin-left" %> 
   </div>
 
 

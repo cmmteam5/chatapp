@@ -17,7 +17,7 @@ class WorkspacesController < ApplicationController
           @c=Workspace.last
           @userWorkspace=Userworkspace.new(workspace_id:@c.id,user_id:current_user.id,level:"owner")
           @userWorkspace.save
-          redirect_to @workspace,notice:'Workspace has successfully created'
+          redirect_to @workspace,notice:"#{t('workspace_created')}"
         else
          render 'new'          
         end

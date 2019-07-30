@@ -1,12 +1,12 @@
-<h1>Listing Users</h1>
+<h1><%= t('listing_user') %></h1>
 <table>
   <tbody>
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', user_path(user) %></td>        
-        <td><%= link_to('Logout', logout_path ,  method: :delete) %></td>   
+        <td><%= link_to "#{t('show')}", user_path(user) %></td>        
+        <td><%= link_to("#{t('logout')}", logout_path ,  method: :delete) %></td>   
       </tr>
     <% end %>
   </tbody>

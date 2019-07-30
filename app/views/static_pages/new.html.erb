@@ -1,11 +1,11 @@
 <div>
-<h1><%= t('WELCOME_TO_CMM_CHAT_APPLICATION') %></h1> 
+<h1><%= t('welcome_to_cmm_chat_application') %></h1> 
      
  	<div class="alignment">  
-		<p><%= link_to "Create Your Workspace",new_workspace_path,class: "btn btn-lg btn-info" %></p>
-		<p><%= link_to "Find  Workspace",'/search' %></p>
+		<p><%= link_to "#{t('create_your_workspace')}",new_workspace_path,class: "btn btn-lg btn-info" %></p>
+		<p><%= link_to "#{t('find_workspace')}", '/search' %></p>
 	</div>
+	<span class="alignment_of_logout"> <%= link_to("#{t('logout')}", logout_path, method: :delete) %></span>
 </div>
- 
- 
+
 
