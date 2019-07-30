@@ -21,7 +21,9 @@ h1{
     margin-bottom: 20px;
 }
 
-.link_color {color:red($color: #000000);}
+.link_color {
+    color:red($color: #000000);
+}
 
 .language{
     text-align: center;

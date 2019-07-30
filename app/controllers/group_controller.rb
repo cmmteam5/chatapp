@@ -21,8 +21,7 @@ class GroupController < ApplicationController
             @b=Group.last
             @currentgroup=Groupuser.create(user_id:current_user.id,group_id:@b.id,level:"owner")
             @currentgroup.save                  
-            redirect_to workspace_path(@workspace)  
-                    
+            redirect_to workspace_path(@workspace)             
           end
     end
 

@@ -13,7 +13,7 @@ class SearchController < ApplicationController
             @workspaces = "null"
             
         else
-            user = User.find_by(email:params[:email])
+            user = User.find_by(email:params[:email])       
             @workspace_list=User.all.find_by(id: current_user.id).workspaces
             session[:current_workspace]=@workspace_list.ids           
         end
