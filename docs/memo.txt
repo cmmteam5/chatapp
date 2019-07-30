@@ -48,14 +48,23 @@ rails g controller user
 rails destroy  controller group
 rails g controller group
 
-rails destroy controller home
-rails g controller home
-
 rails destroy controller groupuser
 rails g controller groupuser
 
 rails destroy controller userworkspace
 rails g controller userworkspace
+
+rails destroy  controller groupconversations
+rails g controller groupconversations
+
+rails destroy controller search
+rails g controller search
+
+rails destroy controller session
+rails g controller session
+
+rails destroy controller static_pages
+rails g controller static_pages
 
 
 ************add attribute to table************
@@ -72,16 +81,10 @@ rails destroy migration add_level_to_groupuser
 rails g migration add_level_to_groupuser level:string
 ....................................................
 
-
-
-
+rails destroy migration add_password_digest_to_users
 rails g migration add_password_digest_to_users password_digest:string
 ......................................................
 
-//
-rails destroy migration add_level_to_groupuser
-rails g migration add_level_to_groupuser level:string
-......................................................
 rails db:migrate
 
 
@@ -98,9 +101,74 @@ rails destroy migration remove_email_from_group
 rails g migration remove_email_from_group email:string
 
 
-rails destroy controller searchs
-rails g controller searchs
+************add time zone************
+environment.rb
+Rails .application.configure do 
+config.time_zone='Tokyo'
+config.active_record.default_timezone=:local
+end
+
+application.rb
+config.active_record.default_timezone=:local
+config.time_zone='Tokyo'
+......................................................
+
+************add localization************
+#application.rb
+config.i18n.available_locales = [:en, :ja]
+config.i18n.default_locale = :en
+
+#routes.rb
+scope "(:locale)", locale: /en|ja/ do
+end
+
+#application_controller.rb
+ before_action :set_locale
+     private
+     def set_locale
+       I18n.locale = params[:locale] || session[:locale]|| I18n.default_locale
+       session[:locale]=I18n.locale
+     end
+    
+ 
+    private
+     def default_url_options
+           { locale: I18n.locale }
+     end
+
+# config/initializers/locale.rb
+# Where the I18n library should search for translation files
+I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]
+ 
+# Whitelist locales available for the application
+I18n.available_locales = [:en, :ja]
+ 
+# Set default locale to something other than :en
+I18n.default_locale = :en
+......................................................
+
+************add logger************
+#config/application.rb
+config.log_level = :error
+
+#config/environment/development.rb
+config.log_level = :debug
+
+#lib/message_formatter.rb
+class MessageFormatter < ActiveSupport::Logger::SimpleFormatter
+  def call(severity, time, progname, msg)
+    formatted_severity = sprintf("%-5s",severity.to_s)
+    formatted_time = time.strftime("%Y-%m-%d %H:%M:%S")
+    "[#{formatted_severity} #{formatted_time} #{$}] : #{progname} #{msg}\n"
+  end
+end
+
+#config/application.rb 
+config.autoload_paths << Rails.root.join("lib")
+config.eager_load_paths << Rails.root.join("lib")
+
+#config/environment/development.rb
+config.log_formatter = MessageFormatter.new
 
 
-rails generate migration add_name_to_user name:string 
-rails destroy migration add_name_to_user  
+

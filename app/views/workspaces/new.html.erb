@@ -4,7 +4,6 @@
     <%= form_for @workspace, url: {action: "create"} do |form| %>     
       <%= form.label :"#{t('workspace_name')}" %>
       <%= form.text_field :name,class:"form-control" , placeholder: 'Eg. CMM' %>
-
       <% if @workspace.errors.any? %>
         <div id="errorExplanation">
           <ul>

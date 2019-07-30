@@ -4,7 +4,6 @@
         <li class="nav-item">
           <a class="nav-link" href="#"><%= current_user.name %></a>
         </li>
-
         <li class="nav-item">
           <div class="dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -17,7 +16,6 @@
               </div> 
           </div> 
         </li>
-
         <li class="nav-item">   
           <div class="dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,22 +31,16 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <%= t('friend') %></a>
           <div class="dropdown-menu">                  
-            
            <% if !@userworkspace.nil? %>
             <% @userworkspace.each do |wkuser| %>
                 <% if wkuser.level == "owner" %>
                    <span><%= wkuser.user.name %>-<%= t('you') %></span><br>     
                 <% end %>
-               
                 <% if wkuser.level == "member" %>
                    <span><%= wkuser.user.name %></span><br>
-              
                 <% end %>
-                
-                <% end %>
-                <% end %>
-              
-                   
+             <% end %>
+            <% end %>
           </div>
         </div>
         </li>       
@@ -63,17 +55,15 @@
         <%= t('about') %></a>
         <div class="containersize">
           <div class="dropdown-menu">                
-           
            <p><h4>TEAM 5 </h4></p>
            <p>Shoon Lae Khaing</p>
            <p>Yin Nyein Aye</p>
            <p>Zin Zin Myo Lwin</p>
            <p>May Thu Myat</p>
-         </div>
+          </div>
          </div>
          </div>
         </li>
-
         <li class="nav-item">
           <%= link_to("#{t('logout')}", logout_path, method: :delete) %> 
         </li> 
@@ -95,8 +85,6 @@
               <%= link_to fa_icon("trash-o"), group_path(groups.id), method: :delete, data: { confirm: 'Are you sure?' },class: "dropdown-item" %><span><%= t('delete') %></span>
               <%= link_to fa_icon("user-plus"),group_groupuser_index_path(groups.id),class: "dropdown-item" %><span><%= t('invite') %></span>
               <%= link_to fa_icon("envelope"),group_path(groups),class: "dropdown-item" %><span><%= t('message') %></span><br>
-              
-          
               </ul>
               </div>
               </div>
