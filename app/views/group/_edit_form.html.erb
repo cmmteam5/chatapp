@@ -1,15 +1,15 @@
 <div class="editgroup">
-<%= form_with(model: group, local: true) do |form| %>
-  <% if group.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(group.errors.count, "error") %> prohibited this workspace from being saved:</h2>
-        <ul>
-          <% group.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-  <% end %>
+  <%= form_with(model: group, local: true) do |form| %>
+     <% if group.errors.any? %>
+        <div id="error_explanation">
+           <h2><%= pluralize(group.errors.count, "error") %> prohibited this workspace from being saved:</h2>
+          <ul>
+             <% group.errors.full_messages.each do |message| %>
+               <li><%= message %></li>
+             <% end %>
+          </ul>
+        </div>
+     <% end %>
 
   <div class="field">
     <%= form.label :"#{t('group_name')}" %>
@@ -20,4 +20,6 @@
   <%= form.submit "#{t('edit')}", class: "btn btn-primary" %>
   <%= link_to "#{t('cancel')}", @workspace , class:"btn btn-primary margin-left" %> 
   </div>
+  <% end %>
+</div>
 

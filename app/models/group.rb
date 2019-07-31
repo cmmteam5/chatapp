@@ -3,5 +3,5 @@ class Group < ApplicationRecord
 	has_many :groupusers, dependent: :destroy
 	has_many :users, through: :groupusers  
 	has_many :groupconversations, dependent: :destroy
-	validates :name,:purpose, presence: true
+	validates :name, presence: true
 end

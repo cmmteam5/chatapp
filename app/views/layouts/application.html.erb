@@ -8,6 +8,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
   </head>
   <body>
+    <div class="language">    
+    <%= link_to "English",{:locale=>'en'} %>|    
+    <%= link_to  "日本語",{:locale=>'ja'}  %>
+   </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>  

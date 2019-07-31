@@ -34,9 +34,8 @@ en:
     email: "email"
     password: "password"
     cancel: "Cancel"
-    new_user: " New user?"
+    new_user: " Are You New user? Click Sign Up Now"
     sign_up_now: "Sign up now!"
-    choose_language : "Choose Language:"
     welcome_to_cmm_chat_application: "WELCOME TO CMM CHAT APPLICATION"
     create_your_workspace: "Create Your Workspace"
     find_workspace: "Find  Workspace"
@@ -76,6 +75,12 @@ en:
     gp_created: "Group has successfully created."
     sign_up: " Sign Up"
     pnf: "Page not found"
+    gpmember: "Group Member"
+    role: "Role"
+    member: "Member"
+    in_email_pwd: "Invalid email and password"
+    logout_s: "Logout successfully"
+
 
 
   

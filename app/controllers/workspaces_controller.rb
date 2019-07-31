@@ -26,13 +26,13 @@ class WorkspacesController < ApplicationController
     def show
         logger.info "-----Show #{params[:id]}-------"
         @workspace = Workspace.find(params[:id])     
-        @group = Group.where(:workspace => @workspace.id)     
-        @groupuser=Groupuser.all
+        @groups = Group.where(:workspace => @workspace.id)     
+        
         @user=User.all
         @userworkspace=Userworkspace.where(:workspace =>@workspace.id)
-        @groupuser=Groupuser.where(:group =>@group.ids)
+        @groupuser=Groupuser.where(:group =>@groups.ids)
         session[:current_workspace]=@workspace.id
-
+     
     end
     
     def edit

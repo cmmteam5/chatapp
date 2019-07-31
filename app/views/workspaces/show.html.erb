@@ -72,18 +72,21 @@
   <div class="wrapper"> 
     <nav id="sidebar"> 
       <h4><%= t('group') %></h4>  
-        <ul class="sidebarul">   
-          <% @group.each do |groups| %>
+        <ul class="sidebarul">  
+          
+          <% @groups.each do |group| %>
             <li>
               <div class="dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   <%=  groups.name %></a>
+                   <%=  group.name %></a>
                 <div class="dropdown-menu">
                   <ul>
-                    <%= link_to fa_icon("pencil"),edit_group_path(groups.id),class: "dropdown-item" %><span><%= t('edit') %></span>
-                    <%= link_to fa_icon("trash-o"), group_path(groups.id), method: :delete, data: { confirm: 'Are you sure?' },class: "dropdown-item" %><span><%= t('delete') %></span>
-                    <%= link_to fa_icon("user-plus"),group_groupuser_index_path(groups.id),class: "dropdown-item" %><span><%= t('invite') %></span>
-                    <%= link_to fa_icon("envelope"),group_path(groups),class: "dropdown-item" %><span><%= t('message') %></span><br>
+                    <%= link_to fa_icon("pencil"),edit_group_path(group.id),class: "dropdown-item" %><span><%= t('edit') %></span>
+                    <%= link_to fa_icon("trash-o"), group_path(group.id), method: :delete, data: { confirm: 'Are you sure?' },class: "dropdown-item" %><span><%= t('delete') %></span>
+                    <%= link_to fa_icon("user-plus"),group_groupuser_index_path(group.id),class: "dropdown-item" %><span><%= t('invite') %></span>
+                    <%= link_to fa_icon("envelope"),group_path(group),class: "dropdown-item" %><span><%= t('message') %></span>
+                    
+
                   </ul>
                 </div>
               </div>

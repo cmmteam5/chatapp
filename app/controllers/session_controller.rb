@@ -8,13 +8,13 @@ class SessionController < ApplicationController
           #session[:user_id] = user.id
            redirect_to new_static_page_path
         else
-           flash[:alert] ='Invalid email and password'
+           flash[:alert] ="#{t('in_email_pwd')}"
            redirect_to new_session_path
         end
     end
 
     def destroy
-        flash[:alert]='Logout successfully'
+        flash[:alert]="#{t('logout_s')}"
         log_out
         redirect_to root_url
     end

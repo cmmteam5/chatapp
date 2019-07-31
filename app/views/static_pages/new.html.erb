@@ -1,3 +1,6 @@
+<div class="alignment_of_logout">
+ <%= link_to("#{t('logout')}", logout_path, method: :delete) %>	
+</div>
 <div>
 <h1><%= t('welcome_to_cmm_chat_application') %></h1> 
      
@@ -5,7 +8,7 @@
 		<p><%= link_to "#{t('create_your_workspace')}",new_workspace_path,class: "btn btn-lg btn-info" %></p>
 		<p><%= link_to "#{t('find_workspace')}", '/search' %></p>
 	</div>
-	<span class="alignment_of_logout"> <%= link_to("#{t('logout')}", logout_path, method: :delete) %></span>
+	
 </div>
 
 

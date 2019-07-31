@@ -3,6 +3,7 @@ class GroupController < ApplicationController
     def index
         logger.info "-----Index------"
         @group = Group.all
+         
     end
     
     def new

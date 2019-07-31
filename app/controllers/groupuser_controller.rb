@@ -3,7 +3,9 @@ class GroupuserController < ApplicationController
     def index 
         logger.info "-----index------"
         @users = User.where.not(id: current_user)
-        @workspace =Workspace.find(session[:current_workspace])          
+        @workspace =Workspace.find(session[:current_workspace])    
+        @group = Group.where(:workspace => session[:current_workspace])
+        
     end
 
     def update
@@ -18,7 +20,6 @@ class GroupuserController < ApplicationController
                redirect_to :action => 'index'
             end
         end
-    
         if !@invite.nil?
             @invite.update_attribute(:level, "")
             redirect_to :action => 'index'
