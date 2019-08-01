@@ -9,10 +9,12 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= @workspace.name %>
               </a>              
-              <div class="dropdown-menu" >                     
+              <div class="dropdown-menu" >
+                <%= link_to "#{t('create')}", new_workspace_path,class: "dropdown-item" %>
                 <%= link_to "#{t('edit')}", edit_workspace_path,class: "dropdown-item" %>
                 <%= link_to "#{t('delete')}", workspace_path, method: :delete, data: { confirm: 'Are you sure?' },class: "dropdown-item" %></td>
-                <%= link_to "#{t('invite')}",workspace_userworkspace_index_path(@workspace.id),class: "dropdown-item" %></br>
+                <%= link_to "#{t('invite')}",workspace_userworkspace_index_path(@workspace.id),class: "dropdown-item" %>
+                 <%= link_to "#{t('changews')}", '/search' ,class: "dropdown-item" %>
               </div> 
           </div> 
         </li>
@@ -72,8 +74,7 @@
   <div class="wrapper"> 
     <nav id="sidebar"> 
       <h4><%= t('group') %></h4>  
-        <ul class="sidebarul">  
-          
+        <ul class="sidebarul">          
           <% @groups.each do |group| %>
             <li>
               <div class="dropdown">
@@ -84,9 +85,7 @@
                     <%= link_to fa_icon("pencil"),edit_group_path(group.id),class: "dropdown-item" %><span><%= t('edit') %></span>
                     <%= link_to fa_icon("trash-o"), group_path(group.id), method: :delete, data: { confirm: 'Are you sure?' },class: "dropdown-item" %><span><%= t('delete') %></span>
                     <%= link_to fa_icon("user-plus"),group_groupuser_index_path(group.id),class: "dropdown-item" %><span><%= t('invite') %></span>
-                    <%= link_to fa_icon("envelope"),group_path(group),class: "dropdown-item" %><span><%= t('message') %></span>
-                    
-
+                    <%= link_to fa_icon("envelope"),group_path(group),class: "dropdown-item" %><span><%= t('message') %></span>         
                   </ul>
                 </div>
               </div>

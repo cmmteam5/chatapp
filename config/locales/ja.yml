@@ -16,6 +16,7 @@ ja:
     cmm_chat_application: "CMMチャットアプリケーション"
     delete: "削除する"
     invite: "誘う"
+    changews: "ワークスペースを変更"
     group: "グループ"
     friend: "友達"
     you: "君は"

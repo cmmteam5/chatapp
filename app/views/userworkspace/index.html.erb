@@ -13,33 +13,26 @@
             <% @users.each do |user| %>
              <tr>
                 <td><%= user.id %></td>
-                <td><%= user.name %></td>
-                
+                <td><%= user.name %></td>                
                 <td>
                     <% if !user.userworkspaces.find_by(workspace_id: params[:workspace_id]).nil? %>
                     <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).level=="member" %>  
                     <%= link_to "#{t('uninvite')}",workspace_userworkspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-md", id: user.id %>    
-                    <% end %>
-                       
+                    <% end %>                       
                     <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).level.empty? %>
                     <%= link_to "#{t('invite')}",workspace_userworkspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-md", id: user.id %>
                     <% end %>
-                    <% end %>
-   
+                    <% end %>   
                     <% if user.userworkspaces.find_by(workspace_id: params[:workspace_id]).nil? %> 
                     <%= link_to "#{t('invite')}",workspace_userworkspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-md", id: user.id %>
-                    <% end %>
-   
-                </td>
-                               
+                    <% end %>   
+                </td>                               
               </tr>
-            <% end %>
-                       
+            <% end %>                       
           </tbody>
         </table>
            <%= link_to "#{t('back')}", @workspace %>
-    </div>
-   
+    </div>   
   </div>
    
    
