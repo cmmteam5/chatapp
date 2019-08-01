@@ -24,7 +24,12 @@ class GroupController < ApplicationController
              @currentgroup.save                  
              redirect_to workspace_path(@workspace),notice:"#{t('gp_created')}"  
                     
-          end
+          else
+            render 'new'
+
+         end
+
+        
     end
 
     def show

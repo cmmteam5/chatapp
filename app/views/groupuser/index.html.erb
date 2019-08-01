@@ -17,18 +17,15 @@
                         <td><%= user.id %></td>
                         <td><%= user.name %></td>
                         <td><%= user.email %></td>
-                        <td>
-                    
+                        <td>                    
                             <% if !user.groupusers.find_by(group_id: params[:group_id]).nil? %>
                             <% if user.groupusers.find_by(group_id: params[:group_id]).level=="member" %>  
                             <%= link_to "#{t('uninvite')}", group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>    
-                             <% end %>
-                            
+                             <% end %>                            
                             <% if user.groupusers.find_by(group_id: params[:group_id]).level.empty? %>
                             <%= link_to "#{t('invite')}",group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
                             <% end %>
                             <% end %>
-
                             <% if user.groupusers.find_by(group_id: params[:group_id]).nil? %> 
                             <%= link_to "#{t('invite')}", group_groupuser_path(params[:group_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
                             <% end %>
