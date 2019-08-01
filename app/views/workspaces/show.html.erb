@@ -85,7 +85,7 @@
                     <%= link_to fa_icon("pencil"),edit_group_path(group.id),class: "dropdown-item" %><span><%= t('edit') %></span>
                     <%= link_to fa_icon("trash-o"), group_path(group.id), method: :delete, data: { confirm: 'Are you sure?' },class: "dropdown-item" %><span><%= t('delete') %></span>
                     <%= link_to fa_icon("user-plus"),group_groupuser_index_path(group.id),class: "dropdown-item" %><span><%= t('invite') %></span>
-                    <%= link_to fa_icon("envelope"),group_path(group),class: "dropdown-item" %><span><%= t('message') %></span>         
+                    <%= link_to fa_icon("envelope"),group_path(group),class: "dropdown-item" %><span><%= t('message') %></span>                
                   </ul>
                 </div>
               </div>

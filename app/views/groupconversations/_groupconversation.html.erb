@@ -3,6 +3,7 @@
         <div>
             <span class="style"><%=groupconversation.message %></span>  
             <%= link_to fa_icon("trash"), groupconversation_path(groupconversation), method: "delete" %> 
+            <%= link_to fa_icon("star-o") %> 
             <p class="time"><%= groupconversation.created_at %></p>
         </div>
 </div>

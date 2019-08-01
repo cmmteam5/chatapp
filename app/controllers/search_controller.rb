@@ -9,8 +9,7 @@ class SearchController < ApplicationController
     def search
         logger.info "-----Search------"
         if params[:email].nil?
-           @workspaces = "null"
-            
+           @workspaces = "null"            
         else
             user = User.find_by(email:params[:email])       
             @workspace_list=User.all.find_by(id: current_user.id).workspaces
