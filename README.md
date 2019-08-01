@@ -27,9 +27,4 @@ To commit on Heroku
 7.heroku run rails db:migrate
 
 
-When pg error occurs
-- heroku pg:info
-- 1. heroku addons:create heroku-postgresql
-- 2.heroku config --app your_app_name
-- 3. heroku run rails db:migrate
 
