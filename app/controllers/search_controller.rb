@@ -2,11 +2,11 @@ class SearchController < ApplicationController
 
     def index
         logger.info "----index------"
-        @workspace = Workspace.page(params[:page])
+        @workspace = Workspace.all
         @user=User.all
     end
 
-    def search
+    def search 
         logger.info "-----Search------"
         if params[:email].nil?
            @workspaces = "null"

@@ -33,8 +33,8 @@
           <div class="dropdown-menu">                  
            <% if !@userworkspace.nil? %>
             <% @userworkspace.each do |wkuser| %>
-                <% if wkuser.level == "owner" %>
-                   <span><%= wkuser.user.name %>-<%= t('you') %></span><br>     
+                <% if wkuser.level == "owner" %> 
+                   <span><%= wkuser.user.name %> <%= fa_icon("user-circle") %> </span><br>     
                 <% end %>
                 <% if wkuser.level == "member" %>
                    <span><%= wkuser.user.name %></span><br>

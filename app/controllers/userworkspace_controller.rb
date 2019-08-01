@@ -2,7 +2,7 @@ class UserworkspaceController < ApplicationController
 
     def index
         logger.info "-----Index-------"
-        @users = User.where.not(id: current_user)
+        @users = User.where.not(id: current_user).page params[:page]
         @workspace = Workspace.find(params[:workspace_id])
     end
   

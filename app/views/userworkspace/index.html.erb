@@ -10,6 +10,7 @@
             </tr>
           </thead>
           <tbody>
+          
             <% @users.each do |user| %>
              <tr>
                 <td><%= user.id %></td>
@@ -37,7 +38,9 @@
                        
           </tbody>
         </table>
+        <%= paginate @users %>
            <%= link_to "#{t('back')}", @workspace %>
+           
     </div>
    
   </div>

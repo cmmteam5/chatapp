@@ -2,7 +2,7 @@ class WorkspacesController < ApplicationController
 
     def index
         logger.info "-----Index-------"
-        @workspace = Workspace.all        
+        @workspace = Workspace.all.page(params[:page]).per(1)        
     end  
     
     def new
